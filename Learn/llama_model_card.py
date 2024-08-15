@@ -1,6 +1,7 @@
 import streamlit as st
 
-st.markdown("""
+st.markdown(
+  """
 
 ## Model Information
 
