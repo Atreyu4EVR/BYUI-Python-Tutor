@@ -51,19 +51,19 @@ model_links = {
 # Model descriptions and logos
 model_info = {
     "Meta-Llama 3.1": {
-        'description': """This is the latest model developed by Meta (Llama3.1 8B). View the [Model Card](www.something.com) for the technical specs.""",
+        'description': "This is the latest model developed by Meta (Llama3.1 8B). View the [Model Card](www.something.com) for the technical specs.",
         'logo': 'images/llama_logo.gif'
     },
     "Mixtral 8x7B": {
-        'description': """This model was developed by Mistral.ai (Mixtral 8x7B). View the [Model Card](www.something.com) for the technical specs.""",
+        'description': "This model was developed by Mistral.ai (Mixtral 8x7B). View the [Model Card](www.something.com) for the technical specs.",
         'logo': 'https://mistral.ai/images/logo_hubc88c4ece131b91c7cb753f40e9e1cc5_2589_256x0_resize_q97_h2_lanczos_3.webp'
     },
     "Google-Gemma 2B": {
-        'description': """This model was developed by Google (Gemma 2B). View the [Model Card](www.something.com) for the technical specs.""",
+        'description': "This model was developed by Google (Gemma 2B). View the [Model Card](www.something.com) for the technical specs.",
         'logo': 'https://pbs.twimg.com/media/GG3sJg7X0AEaNIq.jpg'
     },
     "Zephyr-7b": {
-        'description': """The Zephyr model is a **Large Language Model (LLM)**. View the [Model Card](www.something.com) for the technical specs.""",
+        'description': "The Zephyr model is a **Large Language Model (LLM)**. View the [Model Card](www.something.com) for the technical specs.",
         'logo': 'https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha/resolve/main/thumbnail.png'
     }
 }
