@@ -1,0 +1,15 @@
+anthropic
+huggingface_hub
+langchain
+langchain-community
+logging
+menu
+numpy
+openai
+pip-review
+python-dotenv
+requests
+streamlit
+tavily-python
+torch
+transformers
