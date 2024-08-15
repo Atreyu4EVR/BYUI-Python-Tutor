@@ -30,7 +30,7 @@ Artificial intelligence is here to stay and it's going to soon usher a new indus
 Thank you for visiting Atreyu.AI. We invite you to explore, learn, and engage with the future of AI.
 """)
 
-st.markdown("""&nbsp
+st.markdown(""" 
 """)
 
 # Disclaimer
