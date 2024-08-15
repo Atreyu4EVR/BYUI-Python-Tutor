@@ -42,8 +42,8 @@ client = OpenAI(
 
 # Supported models
 model_links = {
-    "Llama-3.1-8B":"meta-llama/Meta-Llama-3.1-8B-Instruct",
-    "Llama-3-70B":"meta-llama/Meta-Llama-3-70B-Instruct",
+    "Meta-Llama (Latest)":"meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "Meta-Llama":"meta-llama/Meta-Llama-3-70B-Instruct",
     "Nous-Hermes-2":"NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO",
     "Mistral-7B":"mistralai/Mistral-7B-Instruct-v0.3",
     "Gemma-2b":"google/gemma-2b-it",
@@ -52,8 +52,8 @@ model_links = {
 
 # Model descriptions and logos
 model_info = {
-    "Llama-3.1-8B": {
-        'description': """The Llama (3.1) model is a **Large Language Model (LLM)** that's able to have question and answer interactions.\n \
+    "Meta-Llama (Latest)": {
+        'description': """This is the latest model developed by Meta (the parent company of Facebook). (3.1) model is a **Large Language Model (LLM)** that's able to have question and answer interactions.\n \
         \nIt was created by the [**Meta's AI**](https://llama.meta.com/) team and has over **8 billion parameters.** \n""",
         'logo': 'images/llama_logo.gif'
     },
