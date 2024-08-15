@@ -97,7 +97,7 @@ def reset_conversation():
     st.session_state.conversation = []
     st.session_state.messages = []
 
-st.header(f"`AteyuChat`")
+st.header(f"`AtreyuChat`")
 
 models =[key for key in model_links.keys()]
 selected_model = st.sidebar.selectbox("Select Model", models)
