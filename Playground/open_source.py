@@ -42,52 +42,31 @@ client = OpenAI(
 
 # Supported models
 model_links = {
-    "Meta-Llama (Latest)":"meta-llama/Meta-Llama-3.1-8B-Instruct",
-    "Meta-Llama":"meta-llama/Meta-Llama-3-70B-Instruct",
-    "Nous-Hermes-2":"NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO",
-    "Mistral-7B":"mistralai/Mistral-7B-Instruct-v0.3",
-    "Gemma-2b":"google/gemma-2b-it",
+    "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "Mixtral 8x7B":"mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "Google-Gemma 2B":"google/gemma-2b-it",
     "Zephyr-7b":"HuggingFaceH4/zephyr-7b-beta"
 }
 
 # Model descriptions and logos
 model_info = {
-    "Meta-Llama (Latest)": {
-        'description': """This is the latest model developed by Meta (the parent company of Facebook). (3.1) model is a **Large Language Model (LLM)** that's able to have question and answer interactions.\n \
-        \nIt was created by the [**Meta's AI**](https://llama.meta.com/) team and has over **8 billion parameters.** \n""",
+    "Meta-Llama 3.1": {
+        'description': """This is the latest model developed by Meta (Llama3.1 8B). View the [Model Card](www.something.com) for the technical specs.""",
         'logo': 'images/llama_logo.gif'
     },
-    "Llama-3-70B": {
-        'description': """The Llama (3) model is a **Large Language Model (LLM)** that's able to have question and answer interactions.\n \
-        \nIt was created by the [**Meta's AI**](https://llama.meta.com/) team and has over **70 billion parameters.** \n""",
-        'logo': 'images/llama_logo.gif'
-    },
-    "Nous-Hermes-2": {
-        'description': """Nous Hermes 2 Mixtral 8x7B DPO is the new flagship Nous Research model trained over the Mixtral 8x7B MoE LLM.\n \
-        \nThe model was trained on over 1,000,000 entries of primarily GPT-4 generated data, as well as other high quality data\n \
-        \nfrom open datasets across the AI landscape, achieving state of the art performance on a variety of tasks.\n""",
-        'logo': 'https://cdn-uploads.huggingface.co/production/uploads/6317aade83d8d2fd903192d9/btRmXWMG7PXatTs-u3G85.jpeg'
-    },
-    "Mistral-7B": {
-        'description': """The Mistral model is a **Large Language Model (LLM)** that's able to have question and answer interactions.\n \
-            \nIt was created by the [**Mistral AI**](https://mistral.ai/news/announcing-mistral-7b/) team and has over **7 billion parameters.** \n""",
+    "Mixtral 8x7B": {
+        'description': """This model was developed by Mistral.ai (Mixtral 8x7B). View the [Model Card](www.something.com) for the technical specs.""",
         'logo': 'https://mistral.ai/images/logo_hubc88c4ece131b91c7cb753f40e9e1cc5_2589_256x0_resize_q97_h2_lanczos_3.webp'
     },
-    "Gemma-2b": {
-        'description': """The Gemma model is a **Large Language Model (LLM)** that's able to have question and answer interactions.\n \
-            \nIt was created by the [**Google's AI Team**](https://blog.google/technology/developers/gemma-open-models/) team and has over **2 billion parameters.** \n""",
+    "Google-Gemma 2B": {
+        'description': """This model was developed by Google (Gemma 2B). View the [Model Card](www.something.com) for the technical specs.""",
         'logo': 'https://pbs.twimg.com/media/GG3sJg7X0AEaNIq.jpg'
     },
     "Zephyr-7b": {
-        'description': """The Zephyr model is a **Large Language Model (LLM)** that's trained to act as helpful assistants.\n \
-        \nFrom Huggingface: \n\
-        Zephyr-7B-β is the second model in the series, and is a fine-tuned version of mistralai/Mistral-7B-v0.1. \
-        [Zephyr-7B-β](https://huggingface.co/HuggingFaceH4/zephyr-7b-beta)\
-        was trained on a mix of publicly available, synthetic datasets using Direct Preference Optimization (DPO)\n""",
+        'description': """The Zephyr model is a **Large Language Model (LLM)**. View the [Model Card](www.something.com) for the technical specs.""",
         'logo': 'https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha/resolve/main/thumbnail.png'
     }
 }
-
 
 # Random dog images for error messages
 random_dog = ["broken_llama3.jpeg"]
