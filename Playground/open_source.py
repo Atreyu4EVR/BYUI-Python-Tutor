@@ -44,7 +44,7 @@ client = OpenAI(
 model_links = {
     "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
     "Mixtral 8x7B":"mistralai/Mixtral-8x7B-Instruct-v0.1",
-    "Google-Gemma 2B":"google/gemma-2b-it",
+    "Google-Gemma 7B":"google/gemma-1.1-7b-it",
     "Zephyr-7b":"HuggingFaceH4/zephyr-7b-beta"
 }
 
@@ -58,8 +58,8 @@ model_info = {
         'description': "This model was developed by Mistral.ai (Mixtral 8x7B). View the [Model Card](www.something.com) for the technical specs.",
         'logo': 'https://mistral.ai/images/logo_hubc88c4ece131b91c7cb753f40e9e1cc5_2589_256x0_resize_q97_h2_lanczos_3.webp'
     },
-    "Google-Gemma 2B": {
-        'description': "This model was developed by Google (Gemma 2B). View the [Model Card](www.something.com) for the technical specs.",
+    "Google-Gemma 7B": {
+        'description': "This model was developed by Google (Gemma 7B). View the [Model Card](www.something.com) for the technical specs.",
         'logo': 'https://pbs.twimg.com/media/GG3sJg7X0AEaNIq.jpg'
     },
     "Zephyr-7b": {
