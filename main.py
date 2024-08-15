@@ -7,25 +7,26 @@ st.title("Welcome to Atreyu.AI")
 st.header("Introduction")
 
 st.markdown("""
-Atreyu.AI is a cutting-edge platform dedicated to showcasing the capabilities and advancements in conversational artificial intelligence. Our mission is to provide users with an accessible and engaging way to explore and interact with state-of-the-art AI models. Whether you're here to learn about AI, stay updated on the latest technological advancements, or experience the power of AI through our chatbot, Atreyu.AI is designed with you in mind.
+Atreyu.AI is a platform dedicated to showcasing the capabilities and advancements in AI with the mission is to provide users with an accessible and engaging way to explore and interact with state-of-the-art AI models. Whether you're here to learn about AI, stay updated on the latest technological advancements, or experience the power of AI through our chatbot, Atreyu.AI is designed with you in mind.
 """)
 
 st.subheader("What You Can Find Here")
 
 st.markdown("""
-- **AI Chatbot**: At the heart of Atreyu.AI is our chatbot, powered by open-source models like Meta's Llama 3. This allows users to engage in natural, human-like conversations with an AI that continuously evolves and improves. Soon, we will be introducing a second chatbot featuring closed-source models from industry leaders like OpenAI and Anthropic, providing even more robust and diverse interactions.
+- **Playground**: At the heart of Atreyu.AI is a free, open-source conversational AI chatbot, powered by an open-source models like Meta's Llama 3. This allows users to engage in natural, human-like conversations with an AI that continuously evolves and improves. Soon, we will be introducing a second chatbot featuring closed-source models from industry leaders like OpenAI and Anthropic, providing even more robust and diverse interactions.
 
-- **Learn About AI**: Our "Learn" section offers a wealth of information tailored to beginners and enthusiasts alike. Here, you'll find clear and concise explanations of key AI and machine learning concepts, designed to help you understand the technology that powers modern AI systems.
+- **Learn**: This section offers a few blog articles tailored to new users of AI. Here, you'll find clear and concise explanations of key AI and machine learning concepts, designed to help you understand the technology that powers modern AI systems.
 
-- **Stay Informed**: The "News" section is your go-to source for the latest developments in AI and technology. We curate headlines and stories that highlight important breakthroughs, ethical considerations, and industry trends, ensuring you stay informed in a rapidly changing field.
+- **News**: The "News" section is your go-to source for the latest developments in AI and technology. We curate headlines and stories that highlight important breakthroughs, ethical considerations, and industry trends, ensuring you stay informed in a rapidly changing field.
 
-### Our Vision
+### Vision
 
-At Atreyu.AI, we believe in the potential of AI to transform the world for the better. Our platform not only aims to demonstrate the capabilities of current AI technologies but also to make these advancements accessible to a broader audience. We are committed to fostering a deeper understanding of AI, promoting ethical practices, and showcasing how AI can be leveraged safely and responsibly.
-
-### Developer: Ron Vallejo
+Artificial intelligence is here to stay and it's going to soon usher a new industrial revolution. AI will have a disruptive impact on all of our lives for better and in many ways for the worse. It's my belief that everyone should at least have some basic understanding of this new technology in order to be informed and empowered with optimism and hope. This platform aims to demonstrate the capabilities of current AI technologies and increase accessiblity to anyone with an open-mind. Having said that, I'm committed to fostering a deeper understanding of AI, promoting ethical practices, and showcasing the advancements in AI and how it can be leveraged safely and responsibly.
 
 Thank you for visiting Atreyu.AI. We invite you to explore, learn, and engage with the future of AI.
+""")
+
+st.markdown("""&nbsp
 """)
 
 # Disclaimer
