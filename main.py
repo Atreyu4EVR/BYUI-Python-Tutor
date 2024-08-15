@@ -1,7 +1,6 @@
 import streamlit as st
 
-st.toast("Warming up...")
-
+st.balloons()
 # Set the title of the web page
 st.title("Welcome to Atreyu.AI")
 
