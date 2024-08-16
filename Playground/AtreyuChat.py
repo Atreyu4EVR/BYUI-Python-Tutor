@@ -180,7 +180,7 @@ if prompt := st.chat_input(f"Type here..."):
     # Display assistant response in chat message container
     with st.chat_message("assistant", avatar=LOGO_URL_SMALL):
         try:
-            st.write_stream(response.content)
+            st.write_stream(response)
 
         except Exception as e:
             response = "😵‍💫 Looks like someone unplugged something"
