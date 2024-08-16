@@ -2,7 +2,6 @@ import logging
 import os
 import streamlit as st
 from huggingface_hub import InferenceClient
-from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
 
 LOGO_URL_LARGE = "images/robot_logo.png"
@@ -52,8 +51,9 @@ def reset_conversation():
 
 models = [key for key in model_links.keys()]
 selected_model = st.sidebar.selectbox("Select Model", models)
-repo_id = model_links[selected_model]
+repo_id = model_links[selected_model]  # This is your selected model repo ID
 
+# Initialize the Hugging Face client with the selected model
 client = InferenceClient(
     model=repo_id,  # Pass the selected model here
     token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
@@ -81,7 +81,6 @@ if st.session_state.prev_option != selected_model:
 if selected_model not in st.session_state:
     st.session_state[selected_model] = model_links[selected_model]
 
-
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -101,19 +100,20 @@ if prompt := st.chat_input("Type here..."):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    # Generate response from the model using InferenceClient
-    response_content = ""
+    # Generate response from the model using InferenceClient with the selected model
     try:
-        for message in client.chat_completion(
-            model=repo_id,  # Pass the selected model here
+        stream = client.chat_completion(
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=500,
+            max_tokens=MAX_TOKENS,
             stream=True,
-        ):
-            response_content += message.choices[0].delta.content
-            # Update the assistant's message in the UI as it comes in
-            st.session_state.messages.append({"role": "assistant", "content": response_content})
-            st.chat_message("assistant", avatar=LOGO_URL_SMALL).markdown(response_content)
+        )
+        
+        # Stream the response using Streamlit's write_stream
+        response_content = st.write_stream(stream)
+        
+        # Once the entire response is accumulated, display it
+        st.session_state.messages.append({"role": "assistant", "content": response_content})
+        st.chat_message("assistant", avatar=LOGO_URL_SMALL).markdown(response_content)
     except Exception as e:
         error_message = "😵‍💫 Looks like someone unplugged something"
         st.markdown(error_message)
