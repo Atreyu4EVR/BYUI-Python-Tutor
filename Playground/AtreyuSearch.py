@@ -1,4 +1,5 @@
 import os
+import json
 import streamlit as st
 from tavily import TavilyClient
 from dotenv import load_dotenv
@@ -40,6 +41,26 @@ def generate_response(input_text, method='search', **kwargs):
         st.error(f"Error occurred: {str(e)}")
         return None
 
+def parse_and_format_response(response):
+    """Parse the JSON response and format it for display using Markdown."""
+    try:
+        # Parse the response as JSON
+        response_data = json.loads(response)
+
+        # Initialize a string to accumulate the formatted response
+        formatted_response = ""
+
+        # Iterate over each result and format it
+        for item in response_data:
+            url = item.get("url", "")
+            content = item.get("content", "")
+            formatted_response += f"**[Link]({url})**\n\n"
+            formatted_response += f"{content}\n\n"
+
+        return formatted_response
+    except Exception as e:
+        return f"Error parsing response: {str(e)}"
+
 # Form for Tavily Web Search
 with st.form("web_search"):
     input_text = st.text_input("Enter search query:")
@@ -53,18 +74,8 @@ with st.form("web_search"):
         # Generate and display the assistant's response
         response = generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
 
-        # If response is a list or generator of chunks, accumulate them
-        full_content = ""
-        if isinstance(response, (list, tuple)) or hasattr(response, '__iter__'):
-            for chunk in response:
-                content = chunk.get('content', '') if isinstance(chunk, dict) else str(chunk)
-                full_content += content
-                print(content, end="", flush=True)  # Print to console if needed
-        else:
-            full_content = response  # Direct response if it's not a generator or list
-        
-        if full_content:
+        if response:
+            formatted_response = parse_and_format_response(response)
             with st.chat_message("assistant"):
-                # Format the response using Markdown
-                st.markdown(full_content)
-
+                # Display the formatted response using Markdown
+                st.markdown(formatted_response)
