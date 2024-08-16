@@ -59,6 +59,8 @@ client = InferenceClient(
     token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
 )
 
+#assistant_prompt="You are a helpful AI assistant named Atreyu developed to answer questions about AI technology."
+
 # Store LLM-generated responses
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "Hello! I'm your AI assistant. How can I help you today?"}]
@@ -78,15 +80,23 @@ def clear_chat_history():
 st.sidebar.button('Clear chat history', on_click=clear_chat_history)
 
 # Function to generate a response from the model using Hugging Face
-def generate_response():
-    prompt = []
-    for dict_message in st.session_state.messages:
-        role = dict_message["role"]
-        content = dict_message["content"]
-        prompt.append(f"{role}\n{content}")
 
-    prompt.append("<|im_start|>assistant")
-    prompt.append("")
+def generate_arctic_response():
+    prompt = []
+
+    # Add the system message at the beginning of the prompt
+    prompt.append("system\nYou are a helpful AI assistant named Atreyu developed to answer questions about AI technology.")
+    
+    for dict_message in st.session_state.messages:
+        if dict_message["role"] == "user":
+            prompt.append(f"user\n{dict_message['content']}")
+        else:  # This assumes the role is 'assistant' otherwise
+            prompt.append(f"assistant\n{dict_message['content']}")
+
+    # Add the final assistant role prompt where the response will be generated
+    prompt.append("assistant")
+    
+    # Combine all the parts into a single string with line breaks
     prompt_str = "\n".join(prompt)
     
     for event in client.chat_completion(
