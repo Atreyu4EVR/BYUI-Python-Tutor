@@ -78,7 +78,7 @@ if selected_model not in st.session_state:
     st.session_state[selected_model] = model_links[selected_model]
 
 client = InferenceClient(
-    "{repo_id}",
+    "repo_id",
     token=os.getenv('HUGGINGFACEHUB_API_TOKEN'),
 )
 
