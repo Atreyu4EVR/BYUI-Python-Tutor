@@ -10,11 +10,6 @@ LOGO_URL_SMALL = "images/robot.png"
 HUMAN_AVATAR = "images/human.png"
 MAX_TOKENS = 2042
 
-st.set_page_config(
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
 user_avatar = "images/human.png"  # replace with your user avatar
 assistant_avatar = "images/robot.png"  # replace with your bot avatar
 
