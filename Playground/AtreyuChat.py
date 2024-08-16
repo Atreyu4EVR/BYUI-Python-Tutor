@@ -97,7 +97,7 @@ def generate_response():
         yield str(event.choices[0].delta.content)
 
 # User-provided prompt
-if prompt := st.chat_input(disabled=not hf_token):
+if prompt := st.chat_input(disabled=not token):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user", avatar=user_avatar):
         st.write(prompt)
