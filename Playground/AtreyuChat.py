@@ -59,68 +59,49 @@ client = InferenceClient(
     token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
 )
 
-# Create a temperature slider
-temp_values = st.sidebar.slider('Adjust creativity level from model responses', 0.0, 1.0, 0.5)
+# Store LLM-generated responses
+if "messages" not in st.session_state.keys():
+    st.session_state.messages = [{"role": "assistant", "content": "Hello! I'm your AI assistant. How can I help you today?"}]
 
-# Create model description
-st.sidebar.markdown(model_info[selected_model]['description'])
-
-# Add reset button to clear conversation
-st.sidebar.button('Reset Chat', on_click=reset_conversation)
-
-# Handle model change
-if "prev_option" not in st.session_state:
-    st.session_state.prev_option = selected_model
-
-if st.session_state.prev_option != selected_model:
-    st.session_state.messages = []
-    st.session_state.prev_option = selected_model
-    reset_conversation()
-
-# Set a default model
-if selected_model not in st.session_state:
-    st.session_state[selected_model] = model_links[selected_model]
-
-# Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-
+# Display or clear chat messages
 for message in st.session_state.messages:
-    avatar = user_avatar if message["role"] == 'user' else assistant_avatar
-    with st.chat_message(message["role"], avatar=avatar):
-        st.markdown(message["content"])
+    with st.chat_message(message["role"], avatar=icons[message["role"]]):
+        st.write(message["content"])
 
-# Accept user input
-if prompt := st.chat_input("Type here..."):
+def clear_chat_history():
+    st.session_state.messages = [{"role": "assistant", "content": "Hello! I'm your AI assistant. How can I help you today?"}]
 
-    # Display user message in chat message container
-    with st.chat_message("user", avatar=HUMAN_AVATAR):
-        st.markdown(prompt)
+st.sidebar.button('Clear chat history', on_click=clear_chat_history)
 
-    # Add user message to chat history
+# Function to generate a response from the model using Hugging Face
+def generate_response():
+    prompt = []
+    for dict_message in st.session_state.messages:
+        role = dict_message["role"]
+        content = dict_message["content"]
+        prompt.append(f"{role}\n{content}")
+
+    prompt.append("<|im_start|>assistant")
+    prompt.append("")
+    prompt_str = "\n".join(prompt)
+    
+    for event in client.chat_completion(
+        messages=[{"role": "user", "content": prompt_str}],
+        max_tokens=MAX_TOKENS,
+        stream=True
+    ):
+        yield str(event.choices[0].delta.content)
+
+# User-provided prompt
+if prompt := st.chat_input(disabled=not hf_token):
     st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user", avatar="🙂"):
+        st.write(prompt)
 
-    # Generate response from the model using InferenceClient with the selected model
-    response_content = ""
-    try:
-        # Stream and accumulate the response content
-        for message in client.chat_completion(
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=500,
-            stream=True,
-        ):
-            delta_content = message.choices[0].delta.content
-            if delta_content:
-                response_content += delta_content
-                
-                # Update the assistant's message in the UI as it accumulates
-                with st.chat_message("assistant", avatar=LOGO_URL_SMALL):
-                    st.markdown(response_content)
-
-        # Once the entire response is accumulated, add it to the session state
-        st.session_state.messages.append({"role": "assistant", "content": response_content})
-        
-    except Exception as e:
-        error_message = "😵‍💫 Looks like someone unplugged something"
-        st.markdown(error_message)
-        st.markdown(f"Error details: {e}")
+# Generate a new response if the last message is not from assistant
+if st.session_state.messages[-1]["role"] != "assistant":
+    selected_model_repo = model_links[selected_model]
+    with st.chat_message("assistant", avatar="./logo.svg"):
+        response = generate_response(selected_model_repo)
+        full_response = st.write_stream(response)
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
