@@ -11,18 +11,14 @@ learn_models = st.Page("Learn/Model_Cards.py", title="Model Cards", icon="🤖")
 news_ai = st.Page("under_construction.py", title="Coming Soon", icon="📰")
 
 logo = "images/small_Logo.png"
-icon = "images/robot.png"
+icon = "images/robot_logo.png"
 
 st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )    
 
-st.logo(
-    logo,
-    link=non,
-    icon_image=icon,
-)
+st.logo(logo, icon_image=icon)
 
 # Build the navigation
 pg = st.navigation(
