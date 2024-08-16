@@ -65,8 +65,12 @@ if "messages" not in st.session_state.keys():
 
 # Display or clear chat messages
 for message in st.session_state.messages:
-    with st.chat_message(message["role"], avatar=icons[message["role"]]):
-        st.write(message["content"])
+    if message["role"] == 'user':
+        avatar = user_avatar
+    else:  # assuming the only other role is 'bot'
+        avatar = assistant_avatar
+    with st.chat_message(message["role"], avatar=avatar):
+        st.markdown(message["content"])
 
 def clear_chat_history():
     st.session_state.messages = [{"role": "assistant", "content": "Hello! I'm your AI assistant. How can I help you today?"}]
@@ -95,13 +99,13 @@ def generate_response():
 # User-provided prompt
 if prompt := st.chat_input(disabled=not hf_token):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user", avatar="🙂"):
+    with st.chat_message("user", avatar=user_avatar):
         st.write(prompt)
 
 # Generate a new response if the last message is not from assistant
 if st.session_state.messages[-1]["role"] != "assistant":
     selected_model_repo = model_links[selected_model]
-    with st.chat_message("assistant", avatar="./logo.svg"):
+    with st.chat_message("assistant", avatar=assistant_avatar):
         response = generate_response(selected_model_repo)
         full_response = st.write_stream(response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
