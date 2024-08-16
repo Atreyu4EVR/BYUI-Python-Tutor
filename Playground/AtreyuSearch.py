@@ -44,5 +44,6 @@ with st.form("web_search"):
     if submitted:
         st.generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
 
-with st.container(height=600):
-    st.markdown(response)
+
+container = st.container(border=True, height=600)
+container.write(response)
