@@ -15,7 +15,8 @@ if not api_key:
     st.stop()
 
 client = TavilyClient(api_key=api_key)
-container = st.container()
+
+message = st.chat_message("assistant")
 
 # Show title and description.
 st.title("AI WebSearch")
@@ -35,7 +36,7 @@ def generate_response(input_text, method='search', **kwargs):
             return
 
         # If no exception occurs, display the response
-        container.write(response)
+        message.write(response)
 
     except Exception as e:
         st.error(f"Error occurred: {str(e)}")
