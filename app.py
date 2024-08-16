@@ -13,12 +13,14 @@ news_ai = st.Page("under_construction.py", title="Coming Soon", icon="📰")
 logo = "images/small_Logo.png"
 icon = "images/robot_logo.png"
 
+image = "images/small_Logo.png"
+
 st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )    
 
-st.logo(logo, icon_image=icon)
+st.sidebar.image(image, caption=None, width=None, use_column_width="auto", clamp=False, channels="RGB", output_format="PNG")
 
 # Build the navigation
 pg = st.navigation(
