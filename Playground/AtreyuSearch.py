@@ -32,9 +32,8 @@ def generate_response(input_text, method='search', **kwargs):
             response = client.qna_search(input_text, **kwargs)
         else:
             st.error(f"Unknown method: {method}")
-            return
+            return None
 
-        # Return the response so it can be handled appropriately
         return response
 
     except Exception as e:
@@ -44,28 +43,26 @@ def generate_response(input_text, method='search', **kwargs):
 def parse_and_format_response(response):
     """Parse the JSON response and format it for display using Markdown."""
     try:
-        # First, decode the outer JSON string
-        decoded_response = json.loads(response)
+        # Since the response is a JSON string, we need to load it
+        response_data = json.loads(response)
 
-        # Then, decode the inner JSON content
-        response_data = json.loads(decoded_response)
-
-        # Initialize a string to accumulate the formatted response
         formatted_response = ""
 
-        # Check if the response data is a list (expected structure)
-        if isinstance(response_data, list):
-            for item in response_data:
-                # Ensure item is a dictionary
-                if isinstance(item, dict):
-                    url = item.get("url", "")
-                    content = item.get("content", "")
-                    formatted_response += f"**[Link]({url})**\n\n"
-                    formatted_response += f"{content}\n\n"
-                else:
-                    st.error("Unexpected item format in the list.")
-        else:
-            st.error("Expected a list in the response, but got something else.")
+        # Extract the query and response time
+        query = response_data.get("query", "No query found")
+        response_time = response_data.get("response_time", "N/A")
+
+        formatted_response += f"**Query:** {query}\n"
+        formatted_response += f"**Response Time:** {response_time} seconds\n\n"
+
+        # Extract and format the search results
+        results = response_data.get("results", [])
+        for result in results:
+            title = result.get("title", "No title")
+            url = result.get("url", "#")
+            content = result.get("content", "No content available")
+
+            formatted_response += f"**[{title}]({url})**\n\n{content}\n\n"
 
         return formatted_response
     except Exception as e:
@@ -82,7 +79,7 @@ with st.form("web_search"):
             st.write(input_text)
 
         # Generate and display the assistant's response
-        response = generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
+        response = generate_response(input_text, method='search', search_depth='advanced', max_results=5, include_answer=False, include_images=False, include_raw_content=False)
         
         if response:
             formatted_response = parse_and_format_response(response)
