@@ -65,7 +65,7 @@ def parse_and_format_response(response):
     except Exception as e:
         return f"Error parsing response: {str(e)}"
 
-left, right = st.columns(gap="small", vertical_alignment="top")
+left, right = st.columns(2, gap="small", vertical_alignment="top")
 
 # Form for Tavily Web Search
 with st.form("web_search"):
