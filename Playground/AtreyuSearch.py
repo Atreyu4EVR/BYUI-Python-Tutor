@@ -41,22 +41,19 @@ def generate_response(input_text, method='search', **kwargs):
         return None
 
 def parse_and_format_response(response):
-    """Parse the JSON response and format it for display using Markdown."""
+    """Parse the response and format it for display using Markdown."""
     try:
-        # Since the response is a JSON string, we need to load it
-        response_data = json.loads(response)
-
         formatted_response = ""
 
         # Extract the query and response time
-        query = response_data.get("query", "No query found")
-        response_time = response_data.get("response_time", "N/A")
+        query = response.get("query", "No query found")
+        response_time = response.get("response_time", "N/A")
 
         formatted_response += f"**Query:** {query}\n"
         formatted_response += f"**Response Time:** {response_time} seconds\n\n"
 
         # Extract and format the search results
-        results = response_data.get("results", [])
+        results = response.get("results", [])
         for result in results:
             title = result.get("title", "No title")
             url = result.get("url", "#")
@@ -67,6 +64,7 @@ def parse_and_format_response(response):
         return formatted_response
     except Exception as e:
         return f"Error parsing response: {str(e)}"
+
 
 # Form for Tavily Web Search
 with st.form("web_search"):
