@@ -81,7 +81,7 @@ st.sidebar.button('Clear chat history', on_click=clear_chat_history)
 
 # Function to generate a response from the model using Hugging Face
 
-def generate_arctic_response():
+def generate_response():
     prompt = []
 
     # Add the system message at the beginning of the prompt
