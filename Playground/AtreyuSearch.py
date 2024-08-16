@@ -52,8 +52,19 @@ with st.form("web_search"):
 
         # Generate and display the assistant's response
         response = generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
+
+        # If response is a list or generator of chunks, accumulate them
+        full_content = ""
+        if isinstance(response, (list, tuple)) or hasattr(response, '__iter__'):
+            for chunk in response:
+                content = chunk.get('content', '') if isinstance(chunk, dict) else str(chunk)
+                full_content += content
+                print(content, end="", flush=True)  # Print to console if needed
+        else:
+            full_content = response  # Direct response if it's not a generator or list
         
-        if response:
+        if full_content:
             with st.chat_message("assistant"):
                 # Format the response using Markdown
-                st.markdown(response)
+                st.markdown(full_content)
+
