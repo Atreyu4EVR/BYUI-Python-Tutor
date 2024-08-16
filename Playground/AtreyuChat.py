@@ -20,7 +20,9 @@ load_dotenv()
 # Supported models
 model_links = {
     "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "Microsoft DialoGPT":"microsoft/DialoGPT-medium",
     "Mixtral 8x7B":"mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "Google Gemma 7B":"google/gemma-1.1-7b-it",
     "Zephyr-7b":"HuggingFaceH4/zephyr-7b-beta"
 }
 
@@ -33,6 +35,10 @@ model_info = {
     "Mixtral 8x7B": {
         'description': "This model was developed by Mistral.ai (Mixtral 8x7B). View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
         'logo': 'https://mistral.ai/images/logo_hubc88c4ece131b91c7cb753f40e9e1cc5_2589_256x0_resize_q97_h2_lanczos_3.webp'
+    },
+    "Microsoft DialoGPT": {
+        'description': "The Zephyr model is a **Large Language Model (LLM)**. View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
+        'logo': 'https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha/resolve/main/thumbnail.png'
     },
     "Zephyr-7b": {
         'description': "The Zephyr model is a **Large Language Model (LLM)**. View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
