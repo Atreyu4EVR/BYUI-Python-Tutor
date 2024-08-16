@@ -17,6 +17,10 @@ st.subheader("AtreyuChat")
 
 load_dotenv()
 
+client = InferenceClient(
+    base_url="https://api-inference.huggingface.co/v1",
+    token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
+)
 
 # Supported models
 model_links = {
@@ -77,10 +81,6 @@ if st.session_state.prev_option != selected_model:
 if selected_model not in st.session_state:
     st.session_state[selected_model] = model_links[selected_model]
 
-client = InferenceClient(
-    "repo_id",
-    token=os.getenv('HUGGINGFACEHUB_API_TOKEN'),
-)
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -105,13 +105,14 @@ if prompt := st.chat_input("Type here..."):
     response_content = ""
     try:
         for message in client.chat_completion(
+            model=repo_id,  # Pass the selected model here
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=MAX_TOKENS,
+            max_tokens=500,
             stream=True,
         ):
             response_content += message.choices[0].delta.content
-            st.session_state.messages.append({"role": "assistant", "content": response_content})
             # Update the assistant's message in the UI as it comes in
+            st.session_state.messages.append({"role": "assistant", "content": response_content})
             st.chat_message("assistant", avatar=LOGO_URL_SMALL).markdown(response_content)
     except Exception as e:
         error_message = "😵‍💫 Looks like someone unplugged something"
