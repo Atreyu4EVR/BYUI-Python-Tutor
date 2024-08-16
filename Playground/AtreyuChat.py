@@ -35,7 +35,7 @@ def img_to_base64(image_path):
 # Initialize the OpenAI client
 client = OpenAI(
     base_url="https://api-inference.huggingface.co/v1",
-    api_key=os.environ.get('HUGGINGFACE_API_KEY')
+    api_key=os.environ.get('HUGGINGFACEHUB_API_TOKEN')
 )
 
 # Supported models
