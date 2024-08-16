@@ -16,7 +16,7 @@ textColor = "DEF8F9"
 
 # Font family for all text in the app, except code blocks. One of "sans serif",
 # "serif", or "monospace".
-font = "serif"
+font = "sans serif"
 
 
 # Change the visibility of items in the toolbar, options menu,
