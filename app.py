@@ -16,10 +16,6 @@ icon = "images/robot.png"
 
 st.image(large_logo)
 
-st.set_page_config(
-    layout="wide"
-)
-
 # Build the navigation
 pg = st.navigation(
     {
