@@ -9,6 +9,7 @@ from openai import OpenAI
 from dotenv import load_dotenv, dotenv_values
 from langchain.prompts import ChatPromptTemplate, FewShotChatMessagePromptTemplate
 from langchain.llms import HuggingFaceHub
+from huggingface_hub import InferenceClient
 
 LOGO_URL_LARGE = "images/robot_logo.png"
 LOGO_URL_SMALL = "images/robot.png"
@@ -33,7 +34,7 @@ def img_to_base64(image_path):
         return None
 
 # Initialize the OpenAI client
-client = OpenAI(
+client = InferenceClient(
     base_url="https://api-inference.huggingface.co/v1",
     api_key=os.environ.get('HUGGINGFACEHUB_API_TOKEN')
 )
