@@ -14,6 +14,11 @@ large_logo = "images/full_logo.png"
 logo = "images/small_Logo.png"
 icon = "images/robot.png"
 
+st.set_page_config(
+    layout="wide",
+    initial_sidebar_state="expanded"
+)    
+
 st.image(large_logo)
 
 # Build the navigation
