@@ -12,7 +12,7 @@ news_ai = st.Page("under_construction.py", title="Coming Soon", icon="📰")
 logo = "images/small_Logo.png"
 icon = "images/robot.png"
 
-st.logo(logo)
+st.image(logo)
 
 # Build the navigation
 pg = st.navigation(
