@@ -16,8 +16,6 @@ if not api_key:
 
 client = TavilyClient(api_key=api_key)
 
-message = st.chat_message("assistant")
-
 # Show title and description.
 st.title("AI WebSearch")
 st.markdown("Powered by *[Tavily](https://tavily.com/)*")
@@ -35,11 +33,12 @@ def generate_response(input_text, method='search', **kwargs):
             st.error(f"Unknown method: {method}")
             return
 
-        # If no exception occurs, display the response
-        message.write(response)
+        # Return the response so it can be handled appropriately
+        return response
 
     except Exception as e:
         st.error(f"Error occurred: {str(e)}")
+        return None
 
 # Form for Tavily Web Search
 with st.form("web_search"):
@@ -47,4 +46,13 @@ with st.form("web_search"):
     submitted = st.form_submit_button("Submit")
 
     if submitted:
-        generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
+        # Display user's query as a chat message
+        with st.chat_message("user"):
+            st.write(input_text)
+
+        # Generate and display the assistant's response
+        response = generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
+        
+        if response:
+            with st.chat_message("assistant"):
+                st.write(response)
