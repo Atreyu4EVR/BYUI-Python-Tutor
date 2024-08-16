@@ -18,8 +18,8 @@ if not api_key:
 client = TavilyClient(api_key=api_key)
 
 # Show title and description.
-st.subheader("AtreyuSearch")
-st.markdown("AI Web Search Powered by *[Tavily](https://tavily.com/)*")
+st.title("AI WebSearch")
+st.markdown("Powered by *[Tavily](https://tavily.com/)*")
 
 def generate_response(input_text, method='search', **kwargs):
     try:
@@ -41,19 +41,22 @@ def generate_response(input_text, method='search', **kwargs):
         return None
 
 def parse_and_format_response(response):
-    """Parse the response and format it for display using Markdown."""
+    """Parse the JSON response and format it for display using Markdown."""
     try:
+        # Since the response is a JSON string, we need to load it
+        response_data = json.loads(response)
+
         formatted_response = ""
 
         # Extract the query and response time
-        query = response.get("query", "No query found")
-        response_time = response.get("response_time", "N/A")
+        query = response_data.get("query", "No query found")
+        response_time = response_data.get("response_time", "N/A")
 
         formatted_response += f"**Query:** {query}\n"
         formatted_response += f"**Response Time:** {response_time} seconds\n\n"
 
         # Extract and format the search results
-        results = response.get("results", [])
+        results = response_data.get("results", [])
         for result in results:
             title = result.get("title", "No title")
             url = result.get("url", "#")
@@ -65,29 +68,23 @@ def parse_and_format_response(response):
     except Exception as e:
         return f"Error parsing response: {str(e)}"
 
-left, right = st.columns(2, gap="small", vertical_alignment="top")
+# Create two columns
+col1, col2 = st.columns(2)
 
-with left:
-    st.subheader("Search Bar")
-
-with right:
-    st. subheader("Results")
-
-# Form for Tavily Web Search
-with st.form("web_search"):
+# Search Input in the first column
+with col1:
+    st.header("Search")
     input_text = st.text_input("Enter search query:")
-    submitted = st.form_submit_button("Submit")
+    search_button = st.button("Search")
 
-    if submitted:
-        # Display user's query as a chat message
-        with st.chat_message("user"):
-            st.write(input_text)
+# Display Results in the second column
+with col2:
+    st.header("Results")
 
+    if search_button and input_text:
         # Generate and display the assistant's response
         response = generate_response(input_text, method='search', search_depth='advanced', max_results=5, include_answer=False, include_images=False, include_raw_content=False)
         
         if response:
             formatted_response = parse_and_format_response(response)
-            with st.chat_message("assistant"):
-                # Display the formatted response using Markdown
-                st.markdown(formatted_response)
+            st.markdown(formatted_response)
