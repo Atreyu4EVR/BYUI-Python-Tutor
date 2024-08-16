@@ -47,15 +47,26 @@ def parse_and_format_response(response):
         # Parse the response as JSON
         response_data = json.loads(response)
 
+        # Debug: Print the type and structure of the parsed data
+        st.write("Debug - Parsed Response:", response_data)
+        st.write("Debug - Type of Parsed Response:", type(response_data))
+
         # Initialize a string to accumulate the formatted response
         formatted_response = ""
 
-        # Iterate over each result and format it
-        for item in response_data:
-            url = item.get("url", "")
-            content = item.get("content", "")
-            formatted_response += f"**[Link]({url})**\n\n"
-            formatted_response += f"{content}\n\n"
+        # Check if the response data is a list (expected structure)
+        if isinstance(response_data, list):
+            for item in response_data:
+                # Ensure item is a dictionary
+                if isinstance(item, dict):
+                    url = item.get("url", "")
+                    content = item.get("content", "")
+                    formatted_response += f"**[Link]({url})**\n\n"
+                    formatted_response += f"{content}\n\n"
+                else:
+                    st.error("Unexpected item format in the list.")
+        else:
+            st.error("Expected a list in the response, but got something else.")
 
         return formatted_response
     except Exception as e:
