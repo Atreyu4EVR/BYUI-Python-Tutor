@@ -19,8 +19,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )    
-
-st.sidebar.image(image, caption=None, width=None, use_column_width="auto", clamp=False, channels="RGB", output_format="PNG")
+st.sidebar.image("images/small_Logo.png")
 
 # Build the navigation
 pg = st.navigation(
