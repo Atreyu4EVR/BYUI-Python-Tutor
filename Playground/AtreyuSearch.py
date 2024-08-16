@@ -15,6 +15,7 @@ if not api_key:
     st.stop()
 
 client = TavilyClient(api_key=api_key)
+container = st.container(border=True, height=600)
 
 # Show title and description.
 st.title("AI WebSearch")
@@ -33,6 +34,8 @@ def generate_response(input_text, method='search', **kwargs):
             st.error(f"Unknown method: {method}")
             return
 
+    container.write(response)
+
     except Exception as e:
         st.error(f"Error occurred: {str(e)}")
 
@@ -43,7 +46,3 @@ with st.form("web_search"):
 
     if submitted:
         st.generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
-
-
-container = st.container(border=True, height=600)
-container.write(response)
