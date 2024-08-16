@@ -2,6 +2,7 @@ import logging
 import os
 import streamlit as st
 from huggingface_hub import InferenceClient
+from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
 
 LOGO_URL_LARGE = "images/robot_logo.png"
@@ -16,11 +17,6 @@ st.subheader("AtreyuChat")
 
 load_dotenv()
 
-# Initialize the OpenAI client
-client = InferenceClient(
-    base_url="https://api-inference.huggingface.co/v1",
-    token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
-)
 
 # Supported models
 model_links = {
@@ -80,6 +76,11 @@ if st.session_state.prev_option != selected_model:
 # Set a default model
 if selected_model not in st.session_state:
     st.session_state[selected_model] = model_links[selected_model]
+
+client = InferenceClient(
+    "{repo_id}",
+    token=os.getenv('HUGGINGFACEHUB_API_TOKEN'),
+)
 
 # Initialize chat history
 if "messages" not in st.session_state:
