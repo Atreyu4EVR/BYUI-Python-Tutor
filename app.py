@@ -19,8 +19,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )    
 
-st.image(large_logo)
-
 # Build the navigation
 pg = st.navigation(
     {
