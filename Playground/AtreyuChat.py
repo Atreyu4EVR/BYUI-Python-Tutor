@@ -17,11 +17,6 @@ st.subheader("AtreyuChat")
 
 load_dotenv()
 
-client = InferenceClient(
-    base_url="https://api-inference.huggingface.co/v1",
-    token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
-)
-
 # Supported models
 model_links = {
     "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
@@ -58,6 +53,11 @@ def reset_conversation():
 models = [key for key in model_links.keys()]
 selected_model = st.sidebar.selectbox("Select Model", models)
 repo_id = model_links[selected_model]
+
+client = InferenceClient(
+    model=repo_id,  # Pass the selected model here
+    token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
+)
 
 # Create a temperature slider
 temp_values = st.sidebar.slider('Adjust creativity level from model responses', 0.0, 1.0, 0.5)
