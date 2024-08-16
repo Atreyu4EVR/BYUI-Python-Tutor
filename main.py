@@ -2,7 +2,7 @@ import streamlit as st
 
 st.balloons()
 # Set the title of the web page
-st.title("Welcome to Atreyu.AI")
+st.title("Welcome")
 
 # Introduction and Purpose
 st.header("Introduction")
