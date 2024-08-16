@@ -9,10 +9,11 @@ learn_models = st.Page("Learn/Model_Cards.py", title="Model Cards", icon="🤖")
 #learn_future_of_ai = st.Page("Learn/future_of_ai.py", title="The Future of AI", icon="🔮")
 news_ai = st.Page("under_construction.py", title="Coming Soon", icon="📰")
 
+large_logo = "images/full_logo.png"
 logo = "images/small_Logo.png"
 icon = "images/robot.png"
 
-st.image(logo)
+st.image(large_logo)
 
 # Build the navigation
 pg = st.navigation(
