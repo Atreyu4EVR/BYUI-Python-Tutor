@@ -45,6 +45,4 @@ with st.form("web_search"):
     submitted = st.form_submit_button("Submit")
 
     if submitted:
-        generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
-
-st.container()
+        st.container.generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
