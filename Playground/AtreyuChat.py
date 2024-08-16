@@ -1,5 +1,6 @@
 import logging
 import os
+import random
 import streamlit as st
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
@@ -76,6 +77,24 @@ Instructions:
 Remember, your purpose is to educate, inform, and empower users with knowledge about AI technology, helping them to better understand and navigate this rapidly evolving field.
 """
 
+# List of greeting variations
+greetings = [
+    "Hi there! I'm Atreyu, your friendly AI assistant. How can I help you with AI today?",
+    "Greetings! I'm Atreyu, your go-to AI assistant. Do you have any questions about AI?",
+    "Hello! I'm Atreyu, your AI guide. What would you like to know about AI today?",
+    "Hey! I'm Atreyu, your AI assistant. Is there anything you'd like to learn about AI?",
+    "Hi! I'm Atreyu, your AI companion. How can I assist you with AI queries?",
+    "Good day! I'm Atreyu, your AI assistant. What questions do you have about AI?",
+    "Hello! I'm Atreyu, your AI helper. What would you like to explore in AI?",
+    "Hi there! I'm Atreyu, your AI expert. How can I assist with your AI questions?",
+    "Greetings! I'm Atreyu, your AI assistant. Any AI-related questions I can help with?",
+    "Hello! I'm Atreyu, your AI assistant. What would you like to know about AI technology?"
+]
+
+# Function to select a random greeting
+def get_random_greeting():
+    return random.choice(greetings)
+
 def reset_conversation():
     """Resets Conversation."""
     st.session_state.conversation = []
@@ -91,12 +110,11 @@ client = InferenceClient(
     token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
 )
 
-#assistant_prompt="You are a helpful AI assistant named Atreyu developed to answer questions about AI technology."
-
 # Store LLM-generated responses
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "Hello! I'm your AI assistant. How can I help you today?"}]
-
+    random_greeting = get_random_greeting()  # Get a random greeting
+    st.session_state.messages = [{"role": "assistant", "content": random_greeting}]
+    
 # Display or clear chat messages
 for message in st.session_state.messages:
     if message["role"] == 'user':
@@ -107,7 +125,8 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "Hello! I'm your AI assistant. How can I help you today?"}]
+    random_greeting = get_random_greeting()  # Get a random greeting
+    st.session_state.messages = [{"role": "assistant", "content": random_greeting}]
 
 st.sidebar.button('Clear chat history', on_click=clear_chat_history)
 
