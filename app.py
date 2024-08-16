@@ -3,6 +3,7 @@ import streamlit as st
 # Define pages
 home_page = st.Page("main.py", title="Home", icon=":material/home:", default=True)
 open_source_chatbot = st.Page("Playground/AtreyuChat.py", title="AtreyuChat", icon="🤖")
+ai_websearch = st.Page("Playground/ai_websearch.py", title="AtreyuWeb", icon="🌐")
 learn_overview = st.Page("Learn/overview.py", title="Introduction to AI", icon="📘")
 learn_demystifying_ai = st.Page("Learn/demystifying_ai.py", title="Demystifying AI", icon="🤔")
 learn_models = st.Page("Learn/Model_Cards.py", title="Model Cards", icon="🤖")
