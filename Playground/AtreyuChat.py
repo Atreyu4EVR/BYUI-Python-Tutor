@@ -134,15 +134,13 @@ few_shot_prompt = FewShotChatMessagePromptTemplate(
     examples=examples,
 )
 
-final_prompt = ChatPromptTemplate.from_messages(   
-
+final_prompt = ChatPromptTemplate.from_messages(
     [
         ("system", "You are a helpful AI assistant named Atreyu developed to answer questions about AI technology."),
         few_shot_prompt,
         ("human", "{input}"),
     ]
 )
-
 
 # Initialize chat history
 if "messages" not in st.session_state:
