@@ -16,12 +16,6 @@ MAX_TOKENS = 2042
 user_avatar = "images/human.png" # replace with your user avatar
 assistant_avatar = "images/robot.png"  # replace with your bot avatar
 
-st.set_page_config(
-    page_title="Atreyu.AI",
-    page_icon="images/robot.png",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
 
 load_dotenv()
 
