@@ -18,8 +18,8 @@ if not api_key:
 client = TavilyClient(api_key=api_key)
 
 # Show title and description.
-st.title("AI WebSearch")
-st.markdown("Powered by *[Tavily](https://tavily.com/)*")
+st.subheader("AtreyuSearch")
+st.markdown("AI Web Search Powered by *[Tavily](https://tavily.com/)*")
 
 def generate_response(input_text, method='search', **kwargs):
     try:
