@@ -55,4 +55,5 @@ with st.form("web_search"):
         
         if response:
             with st.chat_message("assistant"):
-                st.write(response)
+                # Format the response using Markdown
+                st.markdown(response)
