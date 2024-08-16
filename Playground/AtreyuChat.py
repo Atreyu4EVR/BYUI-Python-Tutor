@@ -101,22 +101,26 @@ if prompt := st.chat_input("Type here..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     # Generate response from the model using InferenceClient with the selected model
+    response_content = ""
     try:
-        stream = client.chat_completion(
+        # Stream and accumulate the response content
+        for message in client.chat_completion(
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=MAX_TOKENS,
+            max_tokens=500,
             stream=True,
-        )
-        
-        # Stream the response using Streamlit's write_stream
-        response_content = st.write_stream(stream)
-        
-        # Once the entire response is accumulated, display it
+        ):
+            delta_content = message.choices[0].delta.content
+            if delta_content:
+                response_content += delta_content
+                
+                # Update the assistant's message in the UI as it accumulates
+                with st.chat_message("assistant", avatar=LOGO_URL_SMALL):
+                    st.markdown(response_content)
+
+        # Once the entire response is accumulated, add it to the session state
         st.session_state.messages.append({"role": "assistant", "content": response_content})
-        st.chat_message("assistant", avatar=LOGO_URL_SMALL).markdown(response_content)
+        
     except Exception as e:
         error_message = "😵‍💫 Looks like someone unplugged something"
         st.markdown(error_message)
         st.markdown(f"Error details: {e}")
-
-    st.session_state.messages.append({"role": "assistant", "content": response_content})
