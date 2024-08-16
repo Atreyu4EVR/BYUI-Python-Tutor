@@ -67,6 +67,12 @@ def parse_and_format_response(response):
 
 left, right = st.columns(2, gap="small", vertical_alignment="top")
 
+with left:
+    st.subheader("Search Bar")
+
+with right:
+    st. subheader("Results")
+
 # Form for Tavily Web Search
 with st.form("web_search"):
     input_text = st.text_input("Enter search query:")
