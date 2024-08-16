@@ -22,7 +22,7 @@ model_links = {
     "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
     "Mixtral 8x7B":"mistralai/Mixtral-8x7B-Instruct-v0.1",
     "Google Gemma 7B":"google/gemma-1.1-7b-it",
-    "Falcon 7B":"tiiuae/falcon-7b-instruct"
+    "Microsoft Phi 3B":"microsoft/Phi-3-mini-4k-instruct"
 }
 
 # Model descriptions and logos
