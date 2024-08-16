@@ -106,6 +106,6 @@ if prompt := st.chat_input(f"Type here..."):
 if st.session_state.messages[-1]["role"] != "assistant":
     model=model_links[selected_model]
     with st.chat_message("assistant", avatar=assistant_avatar):
-        response = generate_response(model)
+        response = generate_response()
         full_response = st.write_stream(response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
