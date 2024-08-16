@@ -16,6 +16,8 @@ MAX_TOKENS = 2042
 user_avatar = "images/human.png" # replace with your user avatar
 assistant_avatar = "images/robot.png"  # replace with your bot avatar
 
+st.subheader(f"AtreyuChat")
+
 
 load_dotenv()
 
@@ -69,8 +71,6 @@ def reset_conversation():
     '''Resets Conversation'''
     st.session_state.conversation = []
     st.session_state.messages = []
-
-st.header(f"`AtreyuChat`")
 
 models =[key for key in model_links.keys()]
 selected_model = st.sidebar.selectbox("Select Model", models)
