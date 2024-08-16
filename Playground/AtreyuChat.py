@@ -104,8 +104,8 @@ if prompt := st.chat_input(f"Type here..."):
 
 # Generate a new response if the last message is not from assistant
 if st.session_state.messages[-1]["role"] != "assistant":
-    selected_model_repo = model_links[selected_model]
+    model=model_links[selected_model]
     with st.chat_message("assistant", avatar=assistant_avatar):
-        response = generate_response(selected_model_repo)
+        response = generate_response(model)
         full_response = st.write_stream(response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
