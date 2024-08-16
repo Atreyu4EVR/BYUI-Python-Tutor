@@ -1,5 +1,4 @@
 import os
-import json
 import streamlit as st
 from tavily import TavilyClient
 from dotenv import load_dotenv
@@ -41,37 +40,6 @@ def generate_response(input_text, method='search', **kwargs):
         st.error(f"Error occurred: {str(e)}")
         return None
 
-def parse_and_format_response(response):
-    """Parse the JSON response and format it for display using Markdown."""
-    try:
-        # Parse the response as JSON
-        response_data = json.loads(response)
-
-        # Debug: Print the type and structure of the parsed data
-        st.write("Debug - Parsed Response:", response_data)
-        st.write("Debug - Type of Parsed Response:", type(response_data))
-
-        # Initialize a string to accumulate the formatted response
-        formatted_response = ""
-
-        # Check if the response data is a list (expected structure)
-        if isinstance(response_data, list):
-            for item in response_data:
-                # Ensure item is a dictionary
-                if isinstance(item, dict):
-                    url = item.get("url", "")
-                    content = item.get("content", "")
-                    formatted_response += f"**[Link]({url})**\n\n"
-                    formatted_response += f"{content}\n\n"
-                else:
-                    st.error("Unexpected item format in the list.")
-        else:
-            st.error("Expected a list in the response, but got something else.")
-
-        return formatted_response
-    except Exception as e:
-        return f"Error parsing response: {str(e)}"
-
 # Form for Tavily Web Search
 with st.form("web_search"):
     input_text = st.text_input("Enter search query:")
@@ -84,9 +52,11 @@ with st.form("web_search"):
 
         # Generate and display the assistant's response
         response = generate_response(input_text, method='get_search_context', search_depth='advanced', max_tokens=4000)
-
+        
         if response:
-            formatted_response = parse_and_format_response(response)
+            # Print the raw response for debugging
+            st.write("Raw Response:", response)
+            
+            # Since the response is a string, you can directly display it
             with st.chat_message("assistant"):
-                # Display the formatted response using Markdown
-                st.markdown(formatted_response)
+                st.markdown(response)  # Display the string response in Markdown
