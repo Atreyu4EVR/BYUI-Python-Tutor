@@ -16,11 +16,10 @@ LOGO_URL_SMALL = "images/robot.png"
 HUMAN_AVATAR = "images/human.png"
 MAX_TOKENS = 2042
 
-user_avatar = "images/human.png" # replace with your user avatar
+user_avatar = "images/human.png"  # replace with your user avatar
 assistant_avatar = "images/robot.png"  # replace with your bot avatar
 
-st.subheader(f"AtreyuChat")
-
+st.subheader("AtreyuChat")
 
 load_dotenv()
 
@@ -54,7 +53,7 @@ model_info = {
         'logo': 'images/llama_logo.gif'
     },
     "Mixtral 8x7B": {
-        'description': "This model was developed by Mistral.ai (Mixtral 8x7B). View the [Model Card](https://atreyu.streamlit.app/Model_Cards for the technical specs.",
+        'description': "This model was developed by Mistral.ai (Mixtral 8x7B). View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
         'logo': 'https://mistral.ai/images/logo_hubc88c4ece131b91c7cb753f40e9e1cc5_2589_256x0_resize_q97_h2_lanczos_3.webp'
     },
     "Google-Gemma 7B": {
@@ -71,11 +70,11 @@ model_info = {
 random_dog = ["broken_llama3.jpeg"]
 
 def reset_conversation():
-    '''Resets Conversation'''
+    """Resets Conversation."""
     st.session_state.conversation = []
     st.session_state.messages = []
 
-models =[key for key in model_links.keys()]
+models = [key for key in model_links.keys()]
 selected_model = st.sidebar.selectbox("Select Model", models)
 repo_id = model_links[selected_model]
 
@@ -87,7 +86,6 @@ st.sidebar.markdown(model_info[selected_model]['description'])
 
 # Add reset button to clear conversation
 st.sidebar.button('Reset Chat', on_click=reset_conversation)
-
 
 # Handle model change
 if "prev_option" not in st.session_state:
@@ -115,7 +113,8 @@ examples = [
     {"input": "What technological breakthrough in 2014 significantly advanced generative AI?", "output": "The introduction of Generative Adversarial Networks (GANs) by Ian Goodfellow and his colleagues in 2014 enabled the creation of highly realistic synthetic data, revolutionizing generative AI."},
     {"input": "How has generative AI evolved in recent years?", "output": "Recent advancements include DeepMind's WaveNet in 2016, NVIDIA's Progressive GANs in 2017, OpenAI's GPT-2 and GPT-3 in 2019-2020, and the release of DALL-E and ChatGPT by OpenAI in 2022."},
     {"input": "What are some potential future applications of generative AI in entertainment?", "output": "In entertainment, generative AI could be used to create personalized content such as movies, music, and video games."},
-    {"input": "How might generative AI impact the education industry?", "output": "Generative AI could transform education by creating customized learning materials like textbooks, videos, and interactive simulations tailored to individual learning needs."},{"input": "What are some concerns associated with generative AI?", "output": "Concerns include issues of authenticity, copyright, and the impact on the value of human creativity."},
+    {"input": "How might generative AI impact the education industry?", "output": "Generative AI could transform education by creating customized learning materials like textbooks, videos, and interactive simulations tailored to individual learning needs."},
+    {"input": "What are some concerns associated with generative AI?", "output": "Concerns include issues of authenticity, copyright, and the impact on the value of human creativity."},
     {"input": "How did OpenAI contribute to the advancement of generative AI in 2022?", "output": "OpenAI released DALL-E, which generates images from text prompts, and ChatGPT, a conversational AI, marking significant milestones in generative AI."},
     {"input": "What role does generative AI play in healthcare?", "output": "In healthcare, generative AI could be used to create personalized treatment plans, such as customized medications and therapies."},
     {"input": "Why is responsible use of generative AI important?", "output": "Responsible use of generative AI is crucial to address concerns like authenticity, copyright, and ethical implications, ensuring the technology benefits society without negative consequences."},
@@ -148,31 +147,23 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 for message in st.session_state.messages:
-    if message["role"] == 'user':
-        avatar = user_avatar
-    else:  # assuming the only other role is 'bot'
-        avatar = assistant_avatar
+    avatar = user_avatar if message["role"] == 'user' else assistant_avatar
     with st.chat_message(message["role"], avatar=avatar):
         st.markdown(message["content"])
 
 # Accept user input
-if prompt := st.chat_input(f"Type here..."):
+if prompt := st.chat_input("Type here..."):
 
     # Display user message in chat message container
     with st.chat_message("user", avatar=HUMAN_AVATAR):
         st.markdown(prompt)
 
     # Add user message to chat history
-    # Bot greets the user by their name
-    if "user_name" in st.session_state:
-        with st.chat_message("assistant", avatar=assistant_avatar):
-            st.markdown(f"Welcome, {st.session_state.user_name}!")
-    
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     # Use Langchain with HuggingFaceHub 
     llm = HuggingFaceHub(repo_id=repo_id, 
-                         model_kwargs={"temperature":temp_values, "max_new_tokens":MAX_TOKENS})
+                         model_kwargs={"temperature": temp_values, "max_new_tokens": MAX_TOKENS})
 
     chain = final_prompt | llm 
     response = chain.invoke({"input": prompt})
@@ -180,12 +171,10 @@ if prompt := st.chat_input(f"Type here..."):
     # Display assistant response in chat message container
     with st.chat_message("assistant", avatar=LOGO_URL_SMALL):
         try:
-            st.write(response)
-
+            st.markdown(response)  # Change from st.write to st.markdown for consistency
         except Exception as e:
-            response = "😵‍💫 Looks like someone unplugged something"
-            st.write(response)
-            st.write("This was the error message:")
-            st.write(e)
+            error_message = "😵‍💫 Looks like someone unplugged something"
+            st.markdown(error_message)
+            st.markdown(f"Error details: {e}")
 
     st.session_state.messages.append({"role": "assistant", "content": response})
