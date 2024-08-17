@@ -1,6 +1,7 @@
 import os
 import json
 import time
+import logging
 import streamlit as st
 from tavily import TavilyClient
 from dotenv import load_dotenv
