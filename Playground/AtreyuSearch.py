@@ -64,6 +64,8 @@ def parse_and_format_response(response, my_bar):
 
             formatted_response += f"##### [{title}]({url})\n\n*{content}*\n\n"
 
+        my_bar.progress(100)
+
         return formatted_response
     except Exception as e:
         return f"Error parsing response: {str(e)}"
