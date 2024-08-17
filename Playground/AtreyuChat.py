@@ -27,6 +27,8 @@ utc_now = datetime.now(timezone.utc)
 mountain_time = utc_now.astimezone(mountain_tz)
 formatted_mountain_time = mountain_time.strftime("%Y-%m-%d %H:%M:%S %Z%z")
 
+st.sidebar.text(formatted_mountain_time)
+
 # Supported models
 model_links = {
     "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
