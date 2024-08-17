@@ -32,7 +32,7 @@ def generate_response(input_text, my_bar, method='search', **kwargs):
             else:
                 progress_text = f"Found the Child Empress..."
             
-            time.sleep(0.1)
+            time.sleep(0.5)
             my_bar.progress(percent_complete + 1, text=progress_text)
 
         # Perform the search
