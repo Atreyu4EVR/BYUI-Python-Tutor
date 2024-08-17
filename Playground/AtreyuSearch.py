@@ -22,31 +22,16 @@ client = TavilyClient(api_key=api_key)
 st.title("AI WebSearch")
 st.markdown("Powered by *[Tavily](https://tavily.com/)*")
 
-def generate_response(input_text, method='search', **kwargs):
+def generate_response(input_text, my_bar, method='search', **kwargs):
     try:
-        # Initialize progress bar
-        progress_text = "Fetching AI search results."
-        my_bar = st.progress(0, text=progress_text)
+        # Update progress to indicate the start
+        my_bar.progress(10, text="Starting search...")
 
-        for percent_complete in range(100):
-            time.sleep(0.01)
-            my_bar.progress(percent_complete + 1, text=progress_text)
-        time.sleep(1)
-        my_bar.empty()
+        # Perform the search
+        response = client.search(input_text, **kwargs) if method == 'search' else None
 
-        my_bar.progress(20)
-        # Choose the appropriate method based on the user's choice
-        if method == 'search':
-            response = client.search(input_text, **kwargs)
-        elif method == 'get_search_context':
-            response = client.get_search_context(input_text, **kwargs)
-        elif method == 'qna_search':
-            response = client.qna_search(input_text, **kwargs)
-        else:
-            st.error(f"Unknown method: {method}")
-            return None
-
-        my_bar.progress(60)
+        # Update progress to indicate progress
+        my_bar.progress(60, text="Search complete. Parsing results...")
 
         return response
 
@@ -54,29 +39,20 @@ def generate_response(input_text, method='search', **kwargs):
         st.error(f"Error occurred: {str(e)}")
         return None
 
-def parse_and_format_response(response):
-    """Parse the JSON response and format it for display using Markdown."""
+def parse_and_format_response(response, my_bar):
+    """Parse the response and format it for display using Markdown."""
     try:
-        # If the response is already a dict, no need to parse it
-        if isinstance(response, dict):
-            response_data = response
-        else:
-            # If the response is a JSON string, load it as a dict
-            response_data = json.loads(response)
-
-        my_bar.progress(80, text="Parsing data.")
-
         formatted_response = ""
 
         # Extract the query and response time
-        query = response_data.get("query", "No query found")
-        response_time = response_data.get("response_time", "N/A")
+        query = response.get("query", "No query found")
+        response_time = response.get("response_time", "N/A")
 
         formatted_response += f"**Query:** {query}\n"
         formatted_response += f"**Response Time:** {response_time} seconds\n\n"
 
         # Extract and format the search results
-        results = response_data.get("results", [])
+        results = response.get("results", [])
         for result in results:
             title = result.get("title", "No title")
             url = result.get("url", "#")
@@ -84,6 +60,7 @@ def parse_and_format_response(response):
 
             formatted_response += f"**[{title}]({url})**\n\n{content}\n\n"
 
+        # Update progress to indicate completion
         my_bar.progress(100, text="Complete.")
 
         return formatted_response
@@ -98,12 +75,16 @@ with st.form("web_search"):
 
 # Display Results
 st.header("Results")
-container = st.container(border=True)
+container = st.container()
 
 if submitted and input_text:
+    # Initialize progress bar
+    progress_text = "Operation in progress. Please wait."
+    my_bar = st.progress(0, text=progress_text)
+
     # Generate and display the assistant's response
-    response = generate_response(input_text, method='search', search_depth='advanced', max_results=5, include_answer=False, include_images=False, include_raw_content=False)
+    response = generate_response(input_text, my_bar, method='search', search_depth='advanced', max_results=5, include_answer=False, include_images=False, include_raw_content=False)
     
     if response:
-        formatted_response = parse_and_format_response(response)
+        formatted_response = parse_and_format_response(response, my_bar)
         container.markdown(formatted_response)
