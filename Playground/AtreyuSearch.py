@@ -69,23 +69,20 @@ def parse_and_format_response(response):
         return f"Error parsing response: {str(e)}"
 
 # Search Input in Form for Tavily AI Search
-st.write("This is outside the container")
+st.header("Search")
 with st.form("web_search"):
     input_text = st.text_input("Enter search query:")
     submitted = st.form_submit_button("Submit")
-
-
 
 # Display Results in the second column
 st.header("Results")
 container = st.container(border=True)
 with container:
-    container.write("This is inside the container")
-
+    
     if search_button and input_text:
         # Generate and display the assistant's response
         response = generate_response(input_text, method='search', search_depth='advanced', max_results=5, include_answer=False, include_images=False, include_raw_content=False)
         
         if response:
             formatted_response = parse_and_format_response(response)
-            st.markdown(formatted_response)
+            st.container.markdown(formatted_response)
