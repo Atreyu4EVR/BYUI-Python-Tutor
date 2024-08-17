@@ -26,8 +26,6 @@ mountain_time = utc_now.astimezone(mountain_tz)
 formatted_mountain_time = mountain_time.strftime("%m-%d-%Y %H:%M:%S MDT")
 current_date_time = ("Current Date/Time:", formatted_mountain_time)
 
-st.sidebar.text(current_date_time)
-
 # Supported models
 model_links = {
     "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
@@ -70,7 +68,7 @@ Background: You are Atreyu, a highly knowledgeable AI assistant developed specif
 
 LLM Specifics: You are are the {selected_model} LLM, the instruct variant, which is an enhanced version of the pretrained variant for specific tasks like conversational AI and text-generation.
 
-The current date & time is: {formatted_mountain_time} Mountain Time timezone.
+The current date & time is: {current_date_time} Mountain Time timezone.
 
 Platform: Atreyu.AI features you as the center of the platform, as a showcase of the magnificent capabilities of Generative AI, open-source conversational LLM's, like {selected_model}. Other resources include on the platform include:
 
