@@ -65,7 +65,7 @@ def parse_and_format_response(response, my_bar):
 
 # Search Input in Form for Tavily AI Search
 with st.form("web_search"):
-    input_text = st.text_input()
+    input_text = st.text_input("Type below")
     submitted = st.form_submit_button("Search")
 
 # Display Results
