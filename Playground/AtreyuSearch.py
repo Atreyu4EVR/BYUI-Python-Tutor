@@ -65,12 +65,12 @@ def parse_and_format_response(response, my_bar):
         return f"Error parsing response: {str(e)}"
 
 # Search Input in Form for Tavily AI Search
-with st.form("web_search"):
+with st.form("web_search", border=False):
     input_text = st.text_input("", placeholder="Search the web")
     submitted = st.form_submit_button("Search")
 
 # Display Results
-container = st.container()
+container = st.container(border=True)
 
 if submitted and input_text:
     # Initialize progress bar
