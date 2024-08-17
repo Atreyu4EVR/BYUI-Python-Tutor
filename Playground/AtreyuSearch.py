@@ -68,18 +68,17 @@ def parse_and_format_response(response):
     except Exception as e:
         return f"Error parsing response: {str(e)}"
 
-# Create two columns
-col1, col2 = st.columns(2)
+container = st.container(border=True)
 
-# Search Input in the first column
-with col1:
-    st.header("Search")
+# Search Input in Form for Tavily AI Search
+with st.form("web_search"):
     input_text = st.text_input("Enter search query:")
-    search_button = st.button("Search")
+    submitted = st.form_submit_button("Submit")
 
 # Display Results in the second column
-with col2:
+with container:
     st.header("Results")
+    container.write("This is inside the container")
 
     if search_button and input_text:
         # Generate and display the assistant's response
