@@ -24,7 +24,7 @@ mountain_tz = timezone(mountain_offset, name="MDT")
 utc_now = datetime.now(timezone.utc)
 mountain_time = utc_now.astimezone(mountain_tz)
 formatted_mountain_time = mountain_time.strftime("%m-%d-%Y- %H:%M:%S %Z%z MDT")
-current_date_time = ("Current Date/Time:", formatted_mountain_time, MDT)
+current_date_time = ("Current Date/Time:", formatted_mountain_time, "(MDT)")
 
 st.sidebar.text(current_date_time)
 
