@@ -31,6 +31,7 @@ st.sidebar.text(current_date_time)
 # Supported models
 model_links = {
     "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "Meta-Llama 3-70B":"meta-llama/Meta-Llama-3-70B-Instruct",
     "Mistral-Nemo":"mistralai/Mistral-Nemo-Instruct-2407",
     "Google Gemma 7B":"google/gemma-1.1-7b-it",
     "Microsoft Phi 3B":"microsoft/Phi-3-mini-4k-instruct"
@@ -40,6 +41,10 @@ model_links = {
 model_info = {
     "Meta-Llama 3.1": {
         'description': "This is the latest model developed by Meta (Llama3.1 8B). View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
+        'logo': 'images/llama_logo.gif'
+    },
+    "Meta-Llama 3-70B":{
+        'description': "This is developed by Meta (Llama3 70B). View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
         'logo': 'images/llama_logo.gif'
     },
     "Mistral-Nemo": {
