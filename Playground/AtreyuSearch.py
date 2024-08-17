@@ -82,7 +82,7 @@ with st.form("web_search", border=False):
 container = st.container(border=True)
 
 if submitted and input_text:
-
+    my_bar = st.progress(0)
     # Generate and display the assistant's response
     response = generate_response(input_text, my_bar, method='search', search_depth='advanced', max_results=5, include_answer=True, include_images=False, include_raw_content=False)
     
