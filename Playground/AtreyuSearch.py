@@ -25,8 +25,6 @@ st.markdown("Powered by *[Tavily](https://tavily.com/)*")
 
 def generate_response(input_text, my_bar, method='search', **kwargs):
     try:
-        my_bar = st.progress(0)
-        
         for percent_complete in range(100):
             # Update the progress text based on the percentage of completion.
             if percent_complete < 50:
