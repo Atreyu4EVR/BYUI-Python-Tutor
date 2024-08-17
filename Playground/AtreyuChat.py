@@ -23,10 +23,10 @@ mountain_offset = timedelta(hours=-6)
 mountain_tz = timezone(mountain_offset, name="MDT")
 utc_now = datetime.now(timezone.utc)
 mountain_time = utc_now.astimezone(mountain_tz)
-formatted_mountain_time = mountain_time.strftime("%m-%d-%Y- %H:%M:%S")
-current_date_time = ("Current Date/Time:", formatted_mountain_time)
+formatted_mountain_time = mountain_time.strftime("%m-%d-%Y- %H:%M:%S MDT")
+current_date_time = ("Current Date/Time:", formatted_mountain_time, "(MDT)")
 
-st.sidebar.text(current_date_time)
+st.sidebar.text(formatted_mountain_time)
 
 # Supported models
 model_links = {
