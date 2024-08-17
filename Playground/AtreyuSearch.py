@@ -45,10 +45,10 @@ def parse_and_format_response(response, my_bar):
         formatted_response = ""
 
         # Extract the query and response time
-        query = response.get("query", "No query found")
+        answer = response.get("answer", "No answer found")
         response_time = response.get("response_time", "N/A")
 
-        formatted_response += f"**Query:** {query}\n"
+        formatted_response += f"**Answer:** {answer}\n ---------------"
 
         # Extract and format the search results
         results = response.get("results", [])
