@@ -80,7 +80,7 @@ with st.form("web_search"):
 
 # Display Results
 st.header("Results")
-container = st.container()
+container = st.container(border=True)
 
 if submitted and input_text:
     # Generate and display the assistant's response
