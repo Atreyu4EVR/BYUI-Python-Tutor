@@ -48,7 +48,7 @@ def parse_and_format_response(response, my_bar):
         answer = response.get("answer", "No answer found")
         response_time = response.get("response_time", "N/A")
 
-        formatted_response += f"## Answer:\n\n ***{answer}***\n "
+        formatted_response += f"### Answer:\n\n ***{answer}***\n "
 
         # Extract and format the search results
         results = response.get("results", [])
@@ -64,13 +64,11 @@ def parse_and_format_response(response, my_bar):
         return f"Error parsing response: {str(e)}"
 
 # Search Input in Form for Tavily AI Search
-st.header("Search")
 with st.form("web_search"):
-    input_text = st.text_input("Enter search query:")
-    submitted = st.form_submit_button("Submit")
+    input_text = st.text_input()
+    submitted = st.form_submit_button("Search")
 
 # Display Results
-st.header("Results")
 container = st.container()
 
 if submitted and input_text:
