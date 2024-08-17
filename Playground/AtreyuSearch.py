@@ -77,9 +77,8 @@ with st.form("web_search"):
 
 container = st.container(border=True)
 # Display Results in the second column
-st.write("This is outside the container")
+st.header("Results")
 with container:
-    st.header("Results")
     container.write("This is inside the container")
 
     if search_button and input_text:
