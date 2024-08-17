@@ -20,7 +20,7 @@ load_dotenv()
 # Supported models
 model_links = {
     "Meta-Llama 3.1":"meta-llama/Meta-Llama-3.1-8B-Instruct",
-    "Mixtral 8x7B":"mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "Mistral-Nemo":"mistralai/Mistral-Nemo-Instruct-2407",
     "Google Gemma 7B":"google/gemma-1.1-7b-it",
     "Microsoft Phi 3B":"microsoft/Phi-3-mini-4k-instruct"
 }
@@ -31,17 +31,17 @@ model_info = {
         'description': "This is the latest model developed by Meta (Llama3.1 8B). View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
         'logo': 'images/llama_logo.gif'
     },
-    "Mixtral 8x7B": {
+    "Mistral-Nemo": {
         'description': "This model was developed by Mistral.ai (Mixtral 8x7B). View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
         'logo': 'https://mistral.ai/images/logo_hubc88c4ece131b91c7cb753f40e9e1cc5_2589_256x0_resize_q97_h2_lanczos_3.webp'
     },
-    "Microsoft DialoGPT": {
+    "Google Gemma 7B": {
         'description': "The Zephyr model is a **Large Language Model (LLM)**. View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
         'logo': 'https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha/resolve/main/thumbnail.png'
     },
-    "Zephyr-7b": {
-        'description': "The Zephyr model is a **Large Language Model (LLM)**. View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
-        'logo': 'https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha/resolve/main/thumbnail.png'
+    "Microsoft Phi 3.8B": {
+        'description': "The Phi-3-Mini-4K-Instruct is a 3.8B parameters, lightweight, state-of-the-art open model. View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
+        'logo': 'https://cdn-avatars.huggingface.co/v1/production/uploads/1583646260758-5e64858c87403103f9f1055d.png'
     }
 }
 
