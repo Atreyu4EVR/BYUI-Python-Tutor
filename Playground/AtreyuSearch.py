@@ -1,5 +1,6 @@
 import os
 import json
+import time
 import streamlit as st
 from tavily import TavilyClient
 from dotenv import load_dotenv
@@ -23,6 +24,11 @@ st.markdown("Powered by *[Tavily](https://tavily.com/)*")
 
 def generate_response(input_text, method='search', **kwargs):
     try:
+        # Initialize progress bar
+        progress_text = "Fetching AI search results."
+        my_bar = st.progress(0, text=progress_text)
+
+        my_bar.progress(20)
         # Choose the appropriate method based on the user's choice
         if method == 'search':
             response = client.search(input_text, **kwargs)
@@ -33,6 +39,8 @@ def generate_response(input_text, method='search', **kwargs):
         else:
             st.error(f"Unknown method: {method}")
             return None
+
+        my_bar.progress(60)
 
         return response
 
@@ -49,6 +57,8 @@ def parse_and_format_response(response):
         else:
             # If the response is a JSON string, load it as a dict
             response_data = json.loads(response)
+
+        my_bar.progress(80, text="Parsing data.")
 
         formatted_response = ""
 
@@ -67,6 +77,8 @@ def parse_and_format_response(response):
             content = result.get("content", "No content available")
 
             formatted_response += f"**[{title}]({url})**\n\n{content}\n\n"
+
+        my_bar.progress(100, text="Complete.")
 
         return formatted_response
     except Exception as e:
