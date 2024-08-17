@@ -43,8 +43,12 @@ def generate_response(input_text, method='search', **kwargs):
 def parse_and_format_response(response):
     """Parse the JSON response and format it for display using Markdown."""
     try:
-        # Since the response is a JSON string, we need to load it
-        response_data = json.loads(response)
+        # If the response is already a dict, no need to parse it
+        if isinstance(response, dict):
+            response_data = response
+        else:
+            # If the response is a JSON string, load it as a dict
+            response_data = json.loads(response)
 
         formatted_response = ""
 
