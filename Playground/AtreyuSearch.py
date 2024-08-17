@@ -25,13 +25,13 @@ st.markdown("Powered by *[Tavily](https://tavily.com/)*")
 def generate_response(input_text, my_bar, method='search', **kwargs):
     try:
         # Update progress to indicate the start
-        my_bar.progress(10, text="Fetching...")
+        my_bar.progress(10, text="Waking up Artax...")
 
         # Perform the search
         response = client.search(input_text, **kwargs) if method == 'search' else None
 
         # Update progress to indicate progress
-        my_bar.progress(60, text="Search complete. Parsing results...")
+        my_bar.progress(30, text="Heading into the Nothing...")
 
         return response
 
@@ -42,6 +42,7 @@ def generate_response(input_text, my_bar, method='search', **kwargs):
 def parse_and_format_response(response, my_bar):
     """Parse the response and format it for display using Markdown."""
     try:
+        my_bar.progress(80, text="Saving the Childlike Empress...")
         formatted_response = ""
 
         # Extract the query and response time
@@ -57,7 +58,7 @@ def parse_and_format_response(response, my_bar):
             url = result.get("url", "#")
             content = result.get("content", "No content available")
 
-            formatted_response += f"### {title}\n\n Article Preview:\n\n{content}\n\n"
+            formatted_response += f"#### [{title}]({url})\n\n{content}\n\n"
 
         return formatted_response
     except Exception as e:
