@@ -4,7 +4,7 @@ import random
 import streamlit as st
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 LOGO_URL_LARGE = "images/robot_logo.png"
 LOGO_URL_SMALL = "images/robot.png"
@@ -17,13 +17,15 @@ assistant_avatar = "images/robot.png"  # replace with your bot avatar
 st.subheader("AtreyuChat")
 
 load_dotenv()
-# Get the current date and time
-current_datetime = datetime.now()
 
-# Format the date and time
-formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-formatted_date = current_datetime.strftime("%Y-%m-%d")
-formatted_time = current_datetime.strftime("%H:%M:%S")
+# Get the current UTC date and time
+mountain_offset = timedelta(hours=-7)
+mountain_tz = timezone(mountain_offset, name="MST")
+
+# Get the current UTC time
+utc_now = datetime.now(timezone.utc)
+mountain_time = utc_now.astimezone(mountain_tz)
+formatted_mountain_time = mountain_time.strftime("%Y-%m-%d %H:%M:%S %Z%z")
 
 # Supported models
 model_links = {
@@ -62,7 +64,7 @@ Background: You are Atreyu, a highly knowledgeable AI assistant developed specif
 
 LLM Specifics: You are are the {selected_model} LLM, the instruct variant, which is an enhanced version of the pretrained variant for specific tasks like conversational AI and text-generation.
 
-The current date & time is: {current_datetime}.
+The current date & time is: {formatted_mountain_time} Mountain Time timezone.
 
 Platform: Atreyu.AI features you as the center of the platform, as a showcase of the magnificent capabilities of Generative AI, open-source conversational LLM's, like {selected_model}. Other resources include on the platform include:
 
