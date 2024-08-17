@@ -66,8 +66,11 @@ def parse_and_format_response(response, my_bar):
 
 # Search Input in Form for Tavily AI Search
 with st.form("web_search", border=False):
-    input_text = st.text_input("", placeholder="Search the web")
-    submitted = st.form_submit_button("Search")
+    col1, col2 = st.columns(2)
+    with col1:
+        input_text = st.text_input("", placeholder="Search the web using Atreyu")
+    with col2:
+        submitted = st.form_submit_button("Search")
 
 # Display Results
 container = st.container(border=True)
