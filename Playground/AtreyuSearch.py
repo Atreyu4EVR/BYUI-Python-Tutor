@@ -25,7 +25,7 @@ st.markdown("Powered by *[Tavily](https://tavily.com/)*")
 def generate_response(input_text, my_bar, method='search', **kwargs):
     try:
         # Update progress to indicate the start
-        my_bar.progress(10, text="Starting search...")
+        my_bar.progress(10, text="Fetching...")
 
         # Perform the search
         response = client.search(input_text, **kwargs) if method == 'search' else None
@@ -49,7 +49,6 @@ def parse_and_format_response(response, my_bar):
         response_time = response.get("response_time", "N/A")
 
         formatted_response += f"**Query:** {query}\n"
-        formatted_response += f"**Response Time:** {response_time} seconds\n\n"
 
         # Extract and format the search results
         results = response.get("results", [])
@@ -59,9 +58,6 @@ def parse_and_format_response(response, my_bar):
             content = result.get("content", "No content available")
 
             formatted_response += f"**[{title}]({url})**\n\n{content}\n\n"
-
-        # Update progress to indicate completion
-        my_bar.progress(100, text="Complete.")
 
         return formatted_response
     except Exception as e:
@@ -79,11 +75,11 @@ container = st.container()
 
 if submitted and input_text:
     # Initialize progress bar
-    progress_text = "Operation in progress. Please wait."
+    progress_text = "Sending..."
     my_bar = st.progress(0, text=progress_text)
 
     # Generate and display the assistant's response
-    response = generate_response(input_text, my_bar, method='search', search_depth='advanced', max_results=5, include_answer=False, include_images=False, include_raw_content=False)
+    response = generate_response(input_text, my_bar, method='search', search_depth='advanced', max_results=5, include_answer=True, include_images=False, include_raw_content=False)
     
     if response:
         formatted_response = parse_and_format_response(response, my_bar)
