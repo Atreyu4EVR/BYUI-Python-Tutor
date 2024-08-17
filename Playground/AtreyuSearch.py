@@ -84,7 +84,7 @@ container = st.container(border=True)
 if submitted and input_text:
 
     # Generate and display the assistant's response
-    response = generate_response(input_text, method='search', search_depth='advanced', max_results=5, include_answer=True, include_images=False, include_raw_content=False)
+    response = generate_response(input_text, my_bar, method='search', search_depth='advanced', max_results=5, include_answer=True, include_images=False, include_raw_content=False)
     
     if response:
         formatted_response = parse_and_format_response(response)
