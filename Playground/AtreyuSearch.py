@@ -28,6 +28,12 @@ def generate_response(input_text, method='search', **kwargs):
         progress_text = "Fetching AI search results."
         my_bar = st.progress(0, text=progress_text)
 
+        for percent_complete in range(100):
+            time.sleep(0.01)
+            my_bar.progress(percent_complete + 1, text=progress_text)
+        time.sleep(1)
+        my_bar.empty()
+
         my_bar.progress(20)
         # Choose the appropriate method based on the user's choice
         if method == 'search':
