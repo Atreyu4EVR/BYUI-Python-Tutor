@@ -74,15 +74,14 @@ with st.form("web_search"):
     input_text = st.text_input("Enter search query:")
     submitted = st.form_submit_button("Submit")
 
-# Display Results in the second column
+# Display Results
 st.header("Results")
-container = st.container(border=True)
-with container:
-    
-    if submitted and input_text:
+container = st.container()
+
+if submitted and input_text:
     # Generate and display the assistant's response
     response = generate_response(input_text, method='search', search_depth='advanced', max_results=5, include_answer=False, include_images=False, include_raw_content=False)
     
     if response:
         formatted_response = parse_and_format_response(response)
-        st.container.markdown(formatted_response)
+        container.markdown(formatted_response)
