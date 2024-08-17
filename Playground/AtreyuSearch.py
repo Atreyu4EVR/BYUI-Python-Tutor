@@ -58,7 +58,7 @@ def parse_and_format_response(response, my_bar):
             url = result.get("url", "#")
             content = result.get("content", "No content available")
 
-            formatted_response += f"#### [{title}]({url})\n\n{content}\n\n"
+            formatted_response += f"##### [{title}]({url})\n\n*{content}*\n\n"
 
         return formatted_response
     except Exception as e:
