@@ -22,8 +22,6 @@ client = TavilyClient(api_key=api_key)
 st.subheader("AtreyuSearch")
 st.markdown("Powered by *[Tavily](https://tavily.com/)*")
 
-my_bar = st.progress(0)
-
 def generate_response(input_text, my_bar, method='search', **kwargs):
     try:
         my_bar = st.progress(0)
