@@ -75,9 +75,10 @@ with st.form("web_search"):
     submitted = st.form_submit_button("Submit")
 
 
-container = st.container(border=True)
+
 # Display Results in the second column
 st.header("Results")
+container = st.container(border=True)
 with container:
     container.write("This is inside the container")
 
