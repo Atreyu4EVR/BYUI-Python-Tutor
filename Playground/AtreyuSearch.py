@@ -22,16 +22,24 @@ client = TavilyClient(api_key=api_key)
 st.subheader("AtreyuSearch")
 st.markdown("Powered by *[Tavily](https://tavily.com/)*")
 
+my_bar = st.progress(0)
+
 def generate_response(input_text, my_bar, method='search', **kwargs):
     try:
-        # Update progress to indicate the start
-        my_bar.progress(10, text="Waking up Artax...")
+        my_bar = st.progress(0)
+        
+        for percent_complete in range(100):
+            # Update the progress text based on the percentage of completion.
+            if percent_complete < 50:
+                progress_text = f"Fetching Artax..."
+            else:
+                progress_text = f"Found the Child Empress..."
+            
+            time.sleep(0.1)
+            my_bar.progress(percent_complete + 1, text=progress_text)
 
         # Perform the search
         response = client.search(input_text, **kwargs) if method == 'search' else None
-
-        # Update progress to indicate progress
-        my_bar.progress(30, text="Heading into the Nothing...")
 
         return response
 
@@ -42,7 +50,6 @@ def generate_response(input_text, my_bar, method='search', **kwargs):
 def parse_and_format_response(response, my_bar):
     """Parse the response and format it for display using Markdown."""
     try:
-        my_bar.progress(80, text="Saving the Childlike Empress...")
         formatted_response = ""
 
         # Extract the query and response time
@@ -76,13 +83,10 @@ with st.form("web_search", border=False):
 container = st.container(border=True)
 
 if submitted and input_text:
-    # Initialize progress bar
-    progress_text = "Sending..."
-    my_bar = st.progress(0, text=progress_text)
 
     # Generate and display the assistant's response
     response = generate_response(input_text, my_bar, method='search', search_depth='advanced', max_results=5, include_answer=True, include_images=False, include_raw_content=False)
     
     if response:
-        formatted_response = parse_and_format_response(response, my_bar)
+        formatted_response = parse_and_format_response(response)
         container.markdown(formatted_response)
