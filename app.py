@@ -13,8 +13,7 @@ open_source_chatbot = st.Page("Playground/tutorChat.py", title="Python Tutor", i
 st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
-)    
-st.sidebar.image("images/small_Logo.png")
+)
 
 # Build the navigation
 pg = st.navigation(
