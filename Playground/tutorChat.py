@@ -96,11 +96,11 @@ Instructions:
 
 # List of greeting variations
 greetings = [
-    "Hi there! I'm Atreyu, your friendly AI tutor. How can I help you with Python today?",
-    "Greetings! I'm Atreyu, your go-to AI tutor. Do you have any questions about programming",
-    "Hello! I'm Atreyu, your AI tutor. What would you like to know about Python today?",
-    "Hey! I'm Atreyu, your AI tutor. Is there anything you'd like to learn about Python",
-    "Hello! I'm Atreyu, your AI tutor. What would you like to know about programming?"
+    "Hi there! I'm Ricks, your friendly AI tutor. How can I help you with Python today?",
+    "Greetings! I'm Ricks, your go-to AI tutor. Do you have any questions about programming",
+    "Hello! I'm Ricks, your AI tutor. What would you like to know about Python today?",
+    "Hey! I'm Ricks, your AI tutor. Is there anything you'd like to learn about Python",
+    "Hello! I'm Ricks, your AI tutor. What would you like to know about programming?"
 ]
 
 # Function to select a random greeting
