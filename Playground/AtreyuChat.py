@@ -156,6 +156,7 @@ def generate_response():
     for event in client.chat_completion(
         messages=[{"role": "user", "content": prompt_str}],
         max_tokens=MAX_TOKENS,
+        temperature=0.5,
         stream=True
     ):
         yield str(event.choices[0].delta.content)
