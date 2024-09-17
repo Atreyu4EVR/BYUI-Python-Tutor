@@ -9,7 +9,7 @@ st.header("Introduction")
 st.markdown("""
 **Python Tutor** is a web application written entirely in Python using the Streamlit framework. This application is dedicated to supporting students enrolled in CSE 110 and showcasing the capabilities of Python. **Ricks**, the AI Assistant, is a custom AI model specifically designed to help students by answering questions about programming, the basics of Python, and other course-related topics.
 
-**Playground**: This site leverages Meta's [LLaMA (Large Language Model Meta AI)](https://www.llama.com/), a state-of-the-art open-source conversational AI chatbot developed by Meta. **LLaMA** is designed to understand and generate human-like text, enabling students to engage in natural, meaningful conversations. Its advanced architecture allows for continuous learning and improvement, ensuring that the AI remains up-to-date with the latest programming concepts and educational content.""")
+**Playground**: This site leverages Meta's [LLaMA 3.1 8B Instruct](https://www.llama.com/), a state-of-the-art open-source conversational AI chatbot developed by Meta. **LLaMA** (Large Language Model Meta AI) is designed to understand and generate human-like text, enabling students to engage in natural, meaningful conversations about course-related content. The "Instruct" model was selected for its advanced training architecture which allows for strict adherence to explicit guidelines and instruction, ensuring that the AI provides accurate, safe, moderated responses while staying focused on it's role in providing educational content.""")
 
 # Disclaimer
 st.markdown("""
