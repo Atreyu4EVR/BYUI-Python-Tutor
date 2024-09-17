@@ -7,10 +7,9 @@ st.balloons()
 st.header("Introduction")
 
 st.markdown("""
-Atreyu.AI is web application written entirely in Python using the Streamlit framework. This application is dedicated to showcasing the capabilities of Python for students in CSE 110. Atreyu, the AI Assistant, is a custom AI model designed specifically for the students and is tailor-made to answer questions about programming, the basics of Python, and other course related topics. 
+**Python Tutor** is a web application written entirely in Python using the Streamlit framework. This application is dedicated to supporting students enrolled in CSE 110 and showcasing the capabilities of Python. **Ricks**, the AI Assistant, is a custom AI model specifically designed to help students by answering questions about programming, the basics of Python, and other course-related topics.
 
-**Playground**: At the heart of Atreyu.AI is a free, open-source conversational AI chatbot, powered by an open-source models like Meta's Llama 3. This allows students to engage in natural, human-like conversations with an AI that continuously evolves and improves.
-""")
+**Playground**: This site leverages Meta's [LLaMA (Large Language Model Meta AI)](https://www.llama.com/), a state-of-the-art open-source conversational AI chatbot developed by Meta. **LLaMA** is designed to understand and generate human-like text, enabling students to engage in natural, meaningful conversations. Its advanced architecture allows for continuous learning and improvement, ensuring that the AI remains up-to-date with the latest programming concepts and educational content.""")
 
 # Disclaimer
 st.markdown("""
