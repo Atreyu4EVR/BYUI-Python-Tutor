@@ -15,7 +15,7 @@ user_avatar = "images/human.png"  # replace with your user avatar
 assistant_avatar = "images/robot.png"  # replace with your bot avatar
 
 st.subheader("Python Tutor")
-st.markdown("***made with Meta Llama 3.1***")
+st.markdown(":violet[made with Meta Llama 3.1]")
 
 load_dotenv()
 
