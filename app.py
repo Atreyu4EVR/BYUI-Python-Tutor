@@ -37,6 +37,9 @@ js_code = """<!-- Google tag (gtag.js) -->
   gtag('config', 'G-BPSQ4HKZ1B');
 </script>"""
 
+with open("index.html") as f:
+    html_string = f.read()
+    html(html_string)
 st_javascript(js_code)
 
 # Run the selected page
