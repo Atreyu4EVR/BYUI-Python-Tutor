@@ -13,3 +13,4 @@ streamlit
 tavily-python
 torch
 transformers
+streamlit_javascript
