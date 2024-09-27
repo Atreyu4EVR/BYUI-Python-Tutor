@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit.components.v1 import html
+from streamlit_javascript import st_javascript
 
 # Define pages
 home_page = st.Page("main.py", title="Home", icon=":material/menu:", default=True)
