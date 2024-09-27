@@ -28,19 +28,9 @@ pg = st.navigation(
 
 
 
-google_analytics_js = """
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BPSQ4HKZ1B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BPSQ4HKZ1B');
-</script>
-"""
-
-html(google_analytics_js)
+with open("index.html") as f:
+    html_string = f.read()
+    html(html_string)
 
 # Run the selected page
 pg.run()
