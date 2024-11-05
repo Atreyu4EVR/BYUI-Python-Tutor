@@ -28,8 +28,9 @@ current_date_time = ("Current Date/Time:", formatted_mountain_time)
 
 # Supported models
 model_links = {
-    "meta-llama/Llama-3.2-3B-Instruct",
+    "Meta-Llama 3.1": "meta-llama/Llama-3.1-8B-Instruct",
 }
+
 
 # Model descriptions and logos
 model_info = {
