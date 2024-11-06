@@ -5,6 +5,7 @@ import streamlit as st
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
 from datetime import datetime, timezone, timedelta
+st.subheader("BYU-Idaho Python Tutor")
 
 LOGO_URL_LARGE = "images/robot_logo.png"
 LOGO_URL_SMALL = "images/robot.png"
@@ -14,7 +15,7 @@ MAX_TOKENS = 2042
 user_avatar = "images/human.png"  # replace with your user avatar
 assistant_avatar = "images/robot.png"  # replace with your bot avatar
 
-st.subheader("BYU-Idaho Python Tutor")
+
 
 load_dotenv()
 
