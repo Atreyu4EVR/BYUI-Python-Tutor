@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Introduction and Purpose
-st.header("Introduction")
+st.header("Introductionssss")
 
 st.markdown("""
 **Python Tutor** is a web application written entirely in Python using the Streamlit framework. This application is dedicated to supporting students enrolled in CSE 110 and showcasing the capabilities of Python. **Ricks**, the AI Assistant, is a custom AI model specifically designed to help students by answering questions about programming, the basics of Python, and other course-related topics.
