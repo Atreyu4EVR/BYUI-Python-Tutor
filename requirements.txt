@@ -1,4 +1,3 @@
-anthropic
 huggingface_hub
 langchain
 langchain-community
@@ -10,7 +9,5 @@ pip-review
 python-dotenv
 requests
 streamlit
-tavily-python
-torch
-transformers
 streamlit_javascript
+watchdog

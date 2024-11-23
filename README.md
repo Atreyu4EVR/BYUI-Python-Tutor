@@ -1,26 +1,60 @@
 version - 1.0
 
-## Atreyu.AI
+# Python Tutor AI Assistant
 
-### Introduction
+## Overview
 
-Atreyu.AI is a web application designed to introduce new users to Artificial Intelligence (AI). Our platform showcases the capabilities and advancements in conversational AI, providing an accessible and engaging way to explore and interact with state-of-the-art AI models.
+Python Tutor is a custom AI chatbot designed specifically for BYU-Idaho students as a free programming tutoring resource. This tool serves as a 24/7 learning companion to help students understand Python concepts, debug code, and develop their programming skills while complementing classroom instruction.
 
-### Features
+## Purpose
 
-- **AI Chatbot**: Our chatbot is powered by open-source models like Meta's Llama 3, allowing users to engage in natural, human-like conversations. We will soon introduce a second chatbot featuring closed-source models from industry leaders like OpenAI and Anthropic.
-- **Learn About AI**: Our "Learn" section offers clear and concise explanations of key AI and machine learning concepts, tailored to beginners and enthusiasts alike.
-- **Stay Informed**: The "News" section provides the latest developments in AI and technology, including important breakthroughs, ethical considerations, and industry trends.
+This assistant is designed to:
 
-### Vision
+- Support students in their programming journey
+- Help explain complex Python concepts
+- Assist with debugging and problem-solving
+- Provide guided learning experiences
 
-I believe in the potential of AI to transform the world for the better. Our platform aims to demonstrate the capabilities of current AI technologies, make these advancements accessible to a broader audience, and promote ethical practices and safe use of AI.
+## Model Information
 
-### Developer
+Python Tutor utilizes one of the latest LLM's made by Meta, called Llama 3.1. This model represents Meta's most capable large language model (LLM) to date, and is highly regarded for its performance and coding capabilities. The Llama 3.1 collection of large-language models is available for free and open-source use.
 
-Atreyu.AI is developed by Ron Vallejo.
+For comprehensive technical information about Llama 3.1, please see the official [model card](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md), located on GitHub.
 
+## Usage Guidelines
 
-### License
+This AI tool is provided as a free educational resource to support your programming journey. While we encourage students to use this tool to enhance their learning, using it to generate answers or bypass learning constitutes academic dishonesty. This assistant is meant to supplement your education, not replace it. Users are expected to maintain academic integrity when using this tool.
 
-Atreyu.AI is currently being reviewed for licensing terms.
+## Safety Disclaimer
+
+While this AI assistant is designed to be helpful and safe, artificial intelligence systems can occasionally generate unexpected, inaccurate, or inappropriate responses. If you encounter concerning responses, please stop engaging and report the interaction to your instructor or IT support.
+
+## Technical Disclaimer
+
+While we strive to provide accurate and helpful information, please be aware that this AI assistant may occasionally provide incorrect or incomplete responses. Users should always verify information from reliable sources and exercise critical thinking when reviewing generated content.
+
+## Contact
+
+For support or to report issues, please contact [Your Contact Information]
+
+## About
+
+Created by: Ron Vallejo  
+Institution: Brigham Young University-Idaho
+Last Updated: November 22, 2024
+
+## License
+
+© 2024 Ron Vallejo. All rights reserved.
+
+This software is proprietary and confidential. No part of this software may be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of the copyright owner.
+
+### Usage Restrictions:
+
+- This resource is exclusively for BYU-Idaho students' educational use
+- Commercial use is strictly prohibited
+- Redistribution or sharing access with non-BYU-Idaho students is not permitted
+- Modification or derivative works are not allowed
+- Reverse engineering is prohibited
+
+Any unauthorized use, reproduction, or distribution may result in disciplinary action and/or legal consequences.

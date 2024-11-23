@@ -1,46 +1,34 @@
 import streamlit as st
-from streamlit.components.v1 import html
-from streamlit_javascript import st_javascript
-
-# Define pages
-home_page = st.Page("main.py", title="Home", icon=":material/menu:", default=True)
-open_source_chatbot = st.Page("Playground/tutorChat.py", title="Python Tutor", icon=":material/smart_toy:")
-#ai_websearch = st.Page("Playground/AtreyuSearch.py", title="AtreyuSearch", icon=":material/travel_explore:")
-#learn_overview = st.Page("Learn/overview.py", title="Introduction to AI", icon=":material/domain_verification:")
-#learn_demystifying_ai = st.Page("Learn/demystifying_ai.py", title="Demystifying AI", icon=":material/domain_verification:")
-#learn_models = st.Page("Learn/Model_Cards.py", title="Model Cards", icon=":material/web:")
-#learn_future_of_ai = st.Page("Learn/future_of_ai.py", title="The Future of AI", icon="🔮")
-#news_ai = st.Page("under_construction.py", title="Coming Soon", icon=":material/devices_off:")
+from pathlib import Path
 
 st.set_page_config(
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    page_icon=None
 )
+
+import streamlit as st
+
+st.subheader("Python Tutor")
+st.markdown('powered by advanced AI **[:blue[made by Meta]](https://www.llama.com/)**')
+
+LOGO = str(Path(__file__).parent / "images" / "python_tutor_logo.png")
+
+with st.sidebar:
+    st.image(LOGO, caption=None, use_container_width=True, clamp=False, channels="RGB", output_format="auto")
+
+with st.sidebar:
+    st.markdown("**Rules:** This AI tool is provided as a free educational resource to support your learning. We encourage students to use this tool honestly and avoid using it to generate answers or bypass learning. Using this tool to cheat or create your code is academically dishonest.")
+with st.sidebar:
+    st.markdown("***Disclaimer:** While this tool is designed to be helpful and safe, artificial intelligence systems can occasionally generate unexpected, inaccurate, or inappropriate responses. Therefore, user discreption is advised.*")
+
+
+# Define pages
+python_tutor = st.Page("tools/chat.py", title="Python Tutor", icon=":material/smart_toy:")
+
 
 # Build the navigation
-pg = st.navigation(
-    {
-        "Home": [home_page],
-        "Playground": [open_source_chatbot]
-        #"Learn": [learn_overview, learn_demystifying_ai, learn_models],
-        #"News": [news_ai],
-    }
-)
-
-js_code = """<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BPSQ4HKZ1B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BPSQ4HKZ1B');
-</script>"""
-
-with open("index.html") as f:
-    html_string = f.read()
-    html(html_string)
-st_javascript(js_code)
+pg = st.navigation({"Home": [python_tutor]})
 
 # Run the selected page
 pg.run()

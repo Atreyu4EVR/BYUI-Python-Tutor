@@ -1,44 +1,5 @@
+
 [theme]
-
-# One of "light" or "dark".
-base = "dark"
-
-# Primary accent color for interactive elements.
-primaryColor = "33FFFF"
-
-# Background color for the main content area.
-
-# Background color used for the sidebar and most interactive widgets.
-secondaryBackgroundColor = "42434C"
-
-# Font family for all text in the app, except code blocks. One of "sans serif",
-# "serif", or "monospace".
-font = "sans serif"
-
-
-# Change the visibility of items in the toolbar, options menu,
-# and settings dialog (top right of the app).
-# Allowed values:
-# * "auto"      : Show the developer options if the app is accessed through
-#                 localhost or through Streamlit Community Cloud as a developer.
-#                 Hide them otherwise.
-# * "developer" : Show the developer options.
-# * "viewer"    : Hide the developer options.
-# * "minimal"   : Show only options set externally (e.g. through
-#                 Streamlit Community Cloud) or through st.set_page_config.
-#                 If there are no options left, hide the menu.
-# Default: "auto"
-toolbarMode = "auto"
-
-# Controls whether to display the default sidebar page navigation in a
-# multi-page app. This only applies when app's pages are defined by the
-# `pages/` directory.
-# Default: true
-showSidebarNavigation = true
-
-# String format for logging messages. If logger.datetimeFormat is set,
-# logger messages will default to `%(asctime)s.%(msecs)03d %(message)s`. See
-# Python's documentation for available attributes:
-# https://docs.python.org/2.6/library/logging.html#formatter-objects
-# Default: "%(asctime)s %(message)s"
-messageFormat = "%(asctime)s %(message)s"
+base="light"
+primaryColor="#006eb6"
+textColor="#4d4f60"
