@@ -4,7 +4,10 @@ from pathlib import Path
 st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
-    page_icon=None
+    page_icon=None,
+    menu_items={
+        'About': "# Python Tutor is an AI chatbot designed specifically for BYU-Idaho students as a free programming tutoring resource. This tool serves as a 24/7 learning companion to help students understand Python concepts, debug code, and develop their programming skills while complementing classroom instruction. \nArtificial intelligence systems can occasionally generate unexpected, inaccurate, or inappropriate responses. Therefore, user discretion is advised. \n\n© 2024 Ron Vallejo. All rights reserved."
+    }
 )
 
 import streamlit as st
