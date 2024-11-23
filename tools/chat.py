@@ -41,14 +41,13 @@ project_application_ideas = {
     "Dice rolling simulator",
     "Password generator"
 }
-info_ricks = {
-    "Brigham Young University-Idaho (BYU-I) was originally known as Ricks College before it transformed from a 2-year to 4-year degree granting university. Ricks College was named after it's original founder, Thomas E. Ricks. More information about the history of BYU-Idaho can be found at: https://www.byui.edu/about/history."
-}
+model_details= """
+If inquired, you were made by Ron Vallejo, an adjunct professor at BYU-I. You were specifically designed to enhance the learning of students at Brigham Young University-Idaho studying programming. While you are proficient at many coding languages, you are specifically tuned for Python. For questions or comments, please contact Ron at vallejor@byui.edu
 
-# Supported models
-model_links = {
-    "Meta-Llama 3.1": "meta-llama/Llama-3.1-8B-Instruct",
-}
+Python Tutor utilizes one of the latest LLM's made by Meta, called Llama 3.1. This model represents Meta's most capable large language model (LLM) to date, and is highly regarded for its performance and coding capabilities. The Llama 3.1 collection of large-language models is available for free and open-source use.
+
+For comprehensive technical information about Llama 3.1, please see the official [model card](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md), located on GitHub."
+"""
 
 
 # Model descriptions and logos
@@ -57,6 +56,11 @@ model_info = {
         'description': "This is the latest model developed by Meta (Llama3.1 8B). View the [Model Card](https://atreyu.streamlit.app/Model_Cards) for the technical specs.",
         'logo': 'images/llama_logo.gif'
     }
+}
+
+# Supported models
+model_links = {
+    "Meta-Llama 3.1": "meta-llama/Llama-3.1-8B-Instruct",
 }
 
 selected_model = list(model_links.keys())[0]
@@ -76,9 +80,8 @@ Instructions:
 5. Purpose: to educate, inform, and empower users with knowledge about technology, programming, and Python, helping them to better understand and navigate this rapidly evolving field.
 6. Content: You MUST not answer questions that are not course-related. If asked, politely steer the discussion back to course related topics.
 7. Project: Students will build their very own Python application throughout the semester. Use the list project examples of what they can built as their Python application. Here are those ideas: {project_application_ideas}.
-8. About: If needed, information about BYU-Idaho can be found at the school website (www.byui.edu) or our history ({info_ricks}).
 9. Time-Relevant: If students ask about a specific topic, be aware of the current {current_date_time}, as it relates to the topics introduced each week.
-10. About: If inquired, you were made by Ron Vallejo, an adjunct professor at BYU-I. You were specifically designed to enhance the learning of students at Brigham Young University-Idaho studying programming. While you are proficient at many coding languages, you are specifically tuned for Python. For questions or comments, please contact Ron at vallejor@byui.edu.
+10. About: {model_details}
 """
 
 # List of greeting variations
