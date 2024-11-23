@@ -21,9 +21,9 @@ with st.sidebar:
     st.divider()
 
 with st.sidebar:
-    st.markdown("**Rules:** This AI tool is provided as a free educational resource to support your learning. We encourage students to use this tool honestly and avoid using it to generate answers or bypass learning. Using this tool to cheat or create your code is academically dishonest.")
+    st.markdown("**Rules:** This AI tool is provided as a free educational resource to support your learning. We encourage students to use this tool honestly and avoid using it to complete assignments or bypass learning. Using this tool to cheat is academically dishonest.")
 with st.sidebar:
-    st.markdown("***Disclaimer:** While this tool is designed to be helpful and safe, artificial intelligence systems can occasionally generate unexpected, inaccurate, or inappropriate responses. Therefore, user discreption is advised.*")
+    st.markdown("***Disclaimer:** While this tool is designed to be helpful and safe, artificial intelligence systems can generate inaccurate, or inappropriate responses. Therefore, user discreption is advised.*")
 
 
 # Define pages
