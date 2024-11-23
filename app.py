@@ -10,7 +10,6 @@ st.set_page_config(
     }
 )
 
-import streamlit as st
 
 st.subheader("Python Tutor")
 st.markdown('powered by advanced AI **[:blue[made by Meta]](https://www.llama.com/)**')
@@ -19,6 +18,7 @@ LOGO = str(Path(__file__).parent / "images" / "python_tutor_logo.png")
 
 with st.sidebar:
     st.image(LOGO, caption=None, use_container_width=True, clamp=False, channels="RGB", output_format="auto")
+    st.divider()
 
 with st.sidebar:
     st.markdown("**Rules:** This AI tool is provided as a free educational resource to support your learning. We encourage students to use this tool honestly and avoid using it to generate answers or bypass learning. Using this tool to cheat or create your code is academically dishonest.")
