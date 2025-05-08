@@ -104,6 +104,7 @@ def reset_conversation():
 
 # Initialize the Hugging Face client with the selected model
 client = InferenceClient(
+    provider="hf-inference"
     model=repo_id,  # Pass the selected model here
     token=os.getenv('HUGGINGFACEHUB_API_TOKEN')
 )
